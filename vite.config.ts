@@ -9,12 +9,27 @@ export default defineConfig({
   plugins: [react(), tailwindcss(),dts({ include: ['src'], insertTypesEntry: true }),],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: {
+        index: resolve(__dirname, 'src/index.ts'),
+        'config/eslint/index': resolve(__dirname, 'src/config/eslint/index.ts'),
+        'config/eslint/base': resolve(__dirname, 'src/config/eslint/base.ts'),
+        'config/eslint/react': resolve(__dirname, 'src/config/eslint/react.ts'),
+        'config/prettier/index': resolve(__dirname, 'src/config/prettier/index.ts'),
+      },
       formats: ['es', 'cjs'],
-      fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`,
+      fileName: (format, entryName) => `${entryName}.${format === 'es' ? 'js' : 'cjs'}`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: [
+        'react', 'react-dom', 'react/jsx-runtime',
+        // ESLint
+        'eslint', '@eslint/js', 'globals', 'typescript-eslint',
+        'eslint-config-prettier',
+        'eslint-plugin-react', 'eslint-plugin-react-hooks',
+        'eslint-plugin-react-refresh', 'eslint-plugin-import-x',
+        // Prettier
+        'prettier',
+      ],
     },
     cssCodeSplit: false,
   },
