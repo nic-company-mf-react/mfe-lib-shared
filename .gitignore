@@ -8,8 +8,11 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
-dist-ssr
+
+# Build output
+# dist/ # 배포된 폴더가 필요하므로 dist를 배포해야함. 
+# dist-ssr
+
 *.local
 
 # Editor directories and files

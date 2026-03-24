@@ -1,0 +1,1 @@
+Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:`Module`}});const e=require(`./base.cjs`),t=require(`./react.cjs`);exports.base=e,exports.default=t,exports.react=t;
