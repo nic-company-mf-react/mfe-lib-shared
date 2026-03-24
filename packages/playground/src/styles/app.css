@@ -1,12 +1,12 @@
 /* 레이아웃 폰트 추가(다른 CSS규칙보다 더 앞에 위치해야 함) */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap') layer(base);
+/*@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap') layer(base);*/
 /* Tailwind 엔진 - 각 앱의 빌드 파이프라인에 속하므로 여기에 유지 */
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
 /* 폰트 - 공유 라이브러리로 옮겨도 되지만 앱에 두는 것도 무방 */
-@import '@fontsource-variable/inter';
+/*@import '@fontsource-variable/inter';*/
 
 /* 공유 라이브러리에서 디자인 토큰 + 베이스 스타일 */
 @import '@nic/mfe-lib-shared/styles';

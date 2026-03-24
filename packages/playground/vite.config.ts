@@ -7,6 +7,7 @@ export default defineConfig({
 	plugins: [react(), tailwindcss()],
 	resolve: {
 		alias: {
+			'@nic/mfe-lib-shared/styles': path.resolve(__dirname, '../../src/styles/index.css'), // CSS 서브패스 전용
 			// HMR을 위해 빌드된 dist가 아닌 라이브러리 src를 직접 참조
 			'@nic/mfe-lib-shared': path.resolve(__dirname, '../../src/index.ts'),
 			'@': path.resolve(__dirname, '../../src'),

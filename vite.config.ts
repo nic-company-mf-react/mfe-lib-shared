@@ -3,10 +3,24 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
+import { viteStaticCopy } from 'vite-plugin-static-copy'; // 파일그대로 배포하기위한 패키지지
 
 // https://vite.dev/config/
 export default defineConfig({
-	plugins: [react(), tailwindcss(), dts({ include: ['src'], insertTypesEntry: true })],
+	plugins: [
+		react(),
+		tailwindcss(),
+		dts({ include: ['src'], insertTypesEntry: true }),
+		viteStaticCopy({
+			// 추가
+			targets: [
+				{
+					src: 'src/styles/**/*.css',
+					dest: 'styles',
+				},
+			],
+		}),
+	],
 	build: {
 		lib: {
 			entry: {

@@ -1,0 +1,6 @@
+@import './tokens.css';
+/*@import './base.css';*/
+@import './layout/layout.css';
+
+/* host앱에있는 화면은 다음 코드를 적용할 bridge.tsx파일이 없으므로 여기에 추가하였다.(shadcn 컴포넌트 스타일을 스캔하기 위하여) */
+@source "../components";
