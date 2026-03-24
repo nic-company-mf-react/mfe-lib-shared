@@ -30,6 +30,8 @@ export default defineConfig({
 				'config/eslint/base': resolve(__dirname, 'src/config/eslint/base.ts'),
 				'config/eslint/react': resolve(__dirname, 'src/config/eslint/react.ts'),
 				'config/prettier/index': resolve(__dirname, 'src/config/prettier/index.ts'),
+				'components/index': resolve(__dirname, 'src/components/index.ts'),
+				'components/ui/index': resolve(__dirname, 'src/components/shadcn/ui/index.ts'),
 			},
 			formats: ['es', 'cjs'],
 			fileName: (format, entryName) => `${entryName}.${format === 'es' ? 'js' : 'cjs'}`,
