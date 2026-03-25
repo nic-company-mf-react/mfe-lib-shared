@@ -10,7 +10,11 @@ export default defineConfig({
 	plugins: [
 		react(),
 		tailwindcss(),
-		dts({ include: ['src'], insertTypesEntry: true }),
+		dts({
+			include: ['src'],
+			insertTypesEntry: true,
+			tsconfigPath: './tsconfig.app.json', // 직접 tsconfig.json 옵션파일을 연결해야함
+		}),
 		viteStaticCopy({
 			// 추가
 			targets: [
@@ -32,6 +36,7 @@ export default defineConfig({
 				'config/prettier/index': resolve(__dirname, 'src/config/prettier/index.ts'),
 				'components/index': resolve(__dirname, 'src/components/index.ts'),
 				'components/ui/index': resolve(__dirname, 'src/components/shadcn/ui/index.ts'),
+				'types/index': resolve(__dirname, 'src/types/index.ts'),
 			},
 			formats: ['es', 'cjs'],
 			fileName: (format, entryName) => `${entryName}.${format === 'es' ? 'js' : 'cjs'}`,
@@ -41,6 +46,7 @@ export default defineConfig({
 				'react',
 				'react-dom',
 				'react/jsx-runtime',
+				'react-router',
 				// ESLint
 				'eslint',
 				'@eslint/js',

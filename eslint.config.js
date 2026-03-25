@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 // 빌드 후 dist에서 import 방법으로 적용
-import reactConfig from './dist/config/eslint/react.js';
+import reactConfig from './dist/config/eslint';
 
 export default defineConfig([
 	globalIgnores(['dist']),

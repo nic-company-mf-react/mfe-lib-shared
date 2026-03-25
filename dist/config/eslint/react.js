@@ -30,7 +30,8 @@ var a = [
 				allowNew: !0,
 				allowLiteral: !1,
 				allowObject: !1
-			}]
+			}],
+			"no-empty-pattern": "off"
 		}
 	}
 ];
