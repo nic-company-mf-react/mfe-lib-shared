@@ -32,11 +32,11 @@
 			"import": "./dist/config/eslint/react.js",
 			"require": "./dist/config/eslint/react.cjs"
 		},
-		"./styles": "./dist/styles/index.css",
-		"./styles/base": "./dist/styles/base.css",
-		"./styles/tokens": "./dist/styles/tokens.css",
-		"./styles/micro-frontend": "./dist/styles/micro-frontend.css",
-		"./styles/layout": "./dist/styles/layout/layout.css",
+		"./styles": "./dist/styles/src/styles/index.css",
+		"./styles/base": "./dist/styles/src/styles/base.css",
+		"./styles/tokens": "./dist/styles/src/styles/tokens.css",
+		"./styles/micro-frontend": "./dist/styles/src/styles/micro-frontend.css",
+		"./styles/layout": "./dist/styles/src/styles/layout/layout.css",
 		"./components": {
 			"import": "./dist/components/index.js",
 			"require": "./dist/components/index.cjs",
