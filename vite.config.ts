@@ -37,6 +37,7 @@ export default defineConfig({
 				'components/index': resolve(__dirname, 'src/components/index.ts'),
 				'components/ui/index': resolve(__dirname, 'src/components/shadcn/ui/index.ts'),
 				'types/index': resolve(__dirname, 'src/types/index.ts'),
+				'context/index': resolve(__dirname, 'src/context/index.ts'),
 			},
 			formats: ['es', 'cjs'],
 			fileName: (format, entryName) => `${entryName}.${format === 'es' ? 'js' : 'cjs'}`,

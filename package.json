@@ -51,6 +51,11 @@
 			"import": "./dist/types/index.js",
 			"require": "./dist/types/index.cjs",
 			"types": "./dist/types/index.d.ts"
+		},
+		"./context": {
+			"import": "./dist/context/index.js",
+			"require": "./dist/context/index.cjs",
+			"types": "./dist/context/index.d.ts"
 		}
 	},
 	"files": [

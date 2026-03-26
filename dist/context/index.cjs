@@ -1,0 +1,1 @@
+Object.defineProperty(exports,Symbol.toStringTag,{value:`Module`});const e=require(`../context-TraFzl4U.cjs`);exports.ThemeProvider=e.t,exports.useTheme=e.n;
