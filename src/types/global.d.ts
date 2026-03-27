@@ -1,0 +1,11 @@
+// 이 파일은 라이브러리 빌드 산출물(dist)에 포함되어, 사용하는 앱에서 별도 선언 없이 아래 선언언 타입이 자동으로 인식된다.
+
+import type { IRouter } from './router/app-router-types';
+
+declare global {
+	interface Window {
+		$router: IRouter;
+	}
+}
+
+export {};

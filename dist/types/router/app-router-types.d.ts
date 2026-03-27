@@ -1,13 +1,11 @@
-import { RouteObject } from 'react-router';
+import { RouteObject, To, NavigateOptions } from 'react-router';
 export type TAppRoute = RouteObject & {
     name?: string;
 };
 export interface IRouter {
-    push(path: string, options?: object): void;
-    setNaviInstance(nav: any): void;
-    setLocationInstance(location: any): void;
-    getLocation(): Location;
-    goBack(): void;
+    push(to: To, options?: NavigateOptions): void;
+    replace(to: To, options?: NavigateOptions): void;
+    back(): void;
 }
 export type TCustomRoute = RouteObject & {
     name?: string;

@@ -1,3 +1,4 @@
 export { Button, buttonVariants } from './components/shadcn/ui/button';
 export { cn } from './components/shadcn/lib/utils';
 export { ThemeProvider, useTheme } from './context';
+export { createWindowRouter, registerWindowRouter } from './utils/router';
