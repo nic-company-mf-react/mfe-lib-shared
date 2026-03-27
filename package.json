@@ -37,6 +37,7 @@
 		"./styles/tokens": "./dist/styles/src/styles/tokens.css",
 		"./styles/micro-frontend": "./dist/styles/src/styles/micro-frontend.css",
 		"./styles/layout": "./dist/styles/src/styles/layout/layout.css",
+		"./styles/components": "./dist/styles/components.css",
 		"./components": {
 			"import": "./dist/components/index.js",
 			"require": "./dist/components/index.cjs",
@@ -71,7 +72,9 @@
 	],
 	"scripts": {
 		"dev": "npm run dev -w packages/playground",
-		"build": "tsc -b && vite build",
+		"build:js": "tsc -b && vite build",
+		"build:css": "tailwindcss -i src/styles/components.css -o dist/styles/components.css --minify",
+		"build": "npm run build:js && npm run build:css",
 		"lint": "eslint .",
 		"preview": "vite preview"
 	},
@@ -101,6 +104,7 @@
 		"typescript-eslint": "^8.57.2"
 	},
 	"devDependencies": {
+		"@tailwindcss/cli": "^4.2.2",
 		"@tailwindcss/vite": "^4.2.2",
 		"@types/node": "^24.12.0",
 		"@types/react": "^19.2.14",
