@@ -3,5 +3,6 @@ declare global {
     interface Window {
         $router: IRouter;
     }
+    const $router: IRouter;
 }
 export {};
