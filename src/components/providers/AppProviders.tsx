@@ -29,16 +29,16 @@ export function AppProviders({ children, queryConfig }: AppProvidersProps) {
 	}, [queryClient]);
 	// Tanstack Query Client를 전역 변수로 설정(Devtools Extension 사용 시 필요) =======
 
-	return (
-		<>
-			<ThemeProvider>
-				<HelmetProvider>
-					<QueryClientProvider client={queryClient}>
-						{children}
-						{process.env.NODE_ENV === 'development' && <ReactQueryDevtools initialIsOpen={false} />}
-					</QueryClientProvider>
-				</HelmetProvider>
-			</ThemeProvider>
-		</>
+	const content = (
+		<ThemeProvider>
+			<HelmetProvider>
+				<QueryClientProvider client={queryClient}>
+					{children}
+					{process.env.NODE_ENV === 'development' && <ReactQueryDevtools initialIsOpen={false} />}
+				</QueryClientProvider>
+			</HelmetProvider>
+		</ThemeProvider>
 	);
+
+	return content;
 }
