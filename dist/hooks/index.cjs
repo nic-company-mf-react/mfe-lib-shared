@@ -1,0 +1,1 @@
+Object.defineProperty(exports,Symbol.toStringTag,{value:`Module`});const e=require(`../hooks-DPaWk6Xx.cjs`);exports.useApi=e.t;

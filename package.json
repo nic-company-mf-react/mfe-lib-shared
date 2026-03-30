@@ -62,6 +62,21 @@
 			"import": "./dist/utils/index.js",
 			"require": "./dist/utils/index.cjs",
 			"types": "./dist/utils/index.d.ts"
+		},
+		"./hooks": {
+			"import": "./dist/hooks/index.js",
+			"require": "./dist/hooks/index.cjs",
+			"types": "./dist/hooks/index.d.ts"
+		},
+		"./api": {
+			"import": "./dist/api/index.js",
+			"require": "./dist/api/index.cjs",
+			"types": "./dist/api/index.d.ts"
+		},
+		"./query": {
+			"import": "./dist/query/index.js",
+			"require": "./dist/query/index.cjs",
+			"types": "./dist/query/index.d.ts"
 		}
 	},
 	"files": [
@@ -79,14 +94,23 @@
 		"preview": "vite preview"
 	},
 	"peerDependencies": {
+		"@tanstack/react-query": "^5.95.2",
+		"@tanstack/react-query-devtools": "^5.95.2",
 		"react": ">=19.0.0",
 		"react-dom": ">=19.0.0",
+		"react-helmet-async": "^3.0.0",
 		"react-router": ">=7.0.0"
+	},
+	"peerDependenciesMeta": {
+		"@tanstack/react-query-devtools": {
+			"optional": true
+		}
 	},
 	"dependencies": {
 		"@base-ui/react": "^1.3.0",
 		"@eslint/js": "^9.39.4",
 		"@fontsource-variable/geist": "^5.2.8",
+		"axios": "^1.14.0",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"eslint": "^9.39.4",
@@ -99,6 +123,7 @@
 		"lucide-react": "^0.577.0",
 		"prettier": "^3.8.1",
 		"shadcn": "^4.1.0",
+		"shiki": "^4.0.2",
 		"tailwind-merge": "^3.5.0",
 		"tw-animate-css": "^1.4.0",
 		"typescript-eslint": "^8.57.2"
@@ -106,6 +131,7 @@
 	"devDependencies": {
 		"@tailwindcss/cli": "^4.2.2",
 		"@tailwindcss/vite": "^4.2.2",
+		"@tanstack/react-query-devtools": "^5.95.2",
 		"@types/node": "^24.12.0",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",

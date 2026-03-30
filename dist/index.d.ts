@@ -1,4 +1,10 @@
 export { Button, buttonVariants } from './components/shadcn/ui/button';
+export { AppProviders } from './components/providers/AppProviders';
+export { default as CodeBlockClient } from './components/code-block/CodeBlockClient';
 export { cn } from './components/shadcn/lib/utils';
 export { ThemeProvider, useTheme } from './context';
 export { createWindowRouter, registerWindowRouter } from './utils/router';
+export { useApi } from './hooks';
+export type { IUseApiQueryOptions, IUseApiMutationOptions, UseApiMutationResult } from './hooks';
+export { initApiConfig, getApiConfig, callApi, ApiError } from './api';
+export { makeQueryClient, getQueryClient, createQueryKey } from './query';

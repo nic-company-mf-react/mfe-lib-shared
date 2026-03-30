@@ -1,0 +1,32 @@
+import { QueryClient as e } from "@tanstack/react-query";
+//#region src/query/query-key-factory.ts
+var t = (e, t) => {
+	let n = e.split("/").filter(Boolean);
+	if (!t || Object.keys(t).length === 0) return n;
+	let r = Object.entries(t).reduce((e, [t, n]) => (n != null && (e[t] = n), e), {});
+	return Object.keys(r).length === 0 ? n : [...n, r];
+}, n = {
+	queries: {
+		retry: 0,
+		refetchOnWindowFocus: !0,
+		refetchOnReconnect: !0,
+		staleTime: 0,
+		gcTime: 0
+	},
+	mutations: { retry: 0 }
+};
+function r(t) {
+	return new e({
+		...t,
+		defaultOptions: {
+			...n,
+			...t?.defaultOptions ?? {}
+		}
+	});
+}
+var i = void 0;
+function a(e) {
+	return typeof window > "u" ? r(e) : (i ||= r(e), i);
+}
+//#endregion
+export { r as n, t as r, a as t };

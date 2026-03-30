@@ -1,0 +1,1 @@
+Object.defineProperty(exports,Symbol.toStringTag,{value:`Module`});const e=require(`../query-client-DXS31cZ-.cjs`);exports.createQueryKey=e.r,exports.getQueryClient=e.t,exports.makeQueryClient=e.n;

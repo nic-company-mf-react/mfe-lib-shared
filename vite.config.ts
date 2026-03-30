@@ -39,6 +39,9 @@ export default defineConfig({
 				'types/index': resolve(__dirname, 'src/types/index.ts'),
 				'context/index': resolve(__dirname, 'src/context/index.ts'),
 				'utils/index': resolve(__dirname, 'src/utils/index.ts'),
+				'hooks/index': resolve(__dirname, 'src/hooks/index.ts'),
+				'api/index': resolve(__dirname, 'src/api/index.ts'),
+				'query/index': resolve(__dirname, 'src/query/index.ts'),
 			},
 			formats: ['es', 'cjs'],
 			fileName: (format, entryName) => `${entryName}.${format === 'es' ? 'js' : 'cjs'}`,
@@ -46,6 +49,7 @@ export default defineConfig({
 		rollupOptions: {
 			preserveEntrySignatures: 'strict', // ← 추가
 			external: [
+				// ← 번들링 방지
 				'react',
 				'react-dom',
 				'react/jsx-runtime',
@@ -62,6 +66,11 @@ export default defineConfig({
 				'eslint-plugin-import-x',
 				// Prettier
 				'prettier',
+				// API
+				'axios',
+				'@tanstack/react-query',
+				'react-helmet-async',
+				'@tanstack/react-query-devtools',
 			],
 		},
 		cssCodeSplit: false,
