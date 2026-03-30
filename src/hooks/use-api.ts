@@ -66,10 +66,7 @@ type UseApiMutationResult<TData, TVariables> = UseMutationResult<TData, Error, T
  *   type: 'query',
  * })
  */
-function useApi<TData>(
-	endpoint: string,
-	options?: IUseApiQueryOptions<TData>,
-): UseQueryResult<TData, Error>;
+function useApi<TData>(endpoint: string, options?: IUseApiQueryOptions<TData>): UseQueryResult<TData, Error>;
 
 /**
  * 변경용 오버로드 (type: 'mutation')
@@ -102,8 +99,7 @@ function useApi<TData = unknown, TVariables = Record<string, unknown>>(
 	// - type 생략 + method가 없거나 GET → 'query'
 	// - type 생략 + method가 POST/PUT/PATCH/DELETE → 'mutation'
 	const resolvedType: 'query' | 'mutation' =
-		options?.type ??
-		(!options?.method || options.method === 'GET' ? 'query' : 'mutation');
+		options?.type ?? (!options?.method || options.method === 'GET' ? 'query' : 'mutation');
 
 	const isQuery = resolvedType === 'query';
 	const queryOpts = options as IUseApiQueryOptions<TData> | undefined;
@@ -111,7 +107,7 @@ function useApi<TData = unknown, TVariables = Record<string, unknown>>(
 
 	// Rules of Hooks: 두 훅 모두 항상 호출하되, 비활성 쪽은 enabled: false 처리
 	const queryResult = useQuery<TData, Error>({
-		queryKey: createQueryKey(endpoint, queryOpts?.body as QueryParams | undefined ?? queryOpts?.params),
+		queryKey: createQueryKey(endpoint, (queryOpts?.body as QueryParams | undefined) ?? queryOpts?.params),
 		queryFn: async () => {
 			const response = await callApi<TData>(endpoint, {
 				method: options?.method ?? 'GET',
@@ -161,11 +157,7 @@ function useApi<TData = unknown, TVariables = Record<string, unknown>>(
 function normalizeBody(variables: unknown): Record<string, unknown> {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const v = variables as any;
-	const isFormData =
-		typeof FormData !== 'undefined' &&
-		typeof v === 'object' &&
-		v !== null &&
-		v instanceof FormData;
+	const isFormData = typeof FormData !== 'undefined' && typeof v === 'object' && v !== null && v instanceof FormData;
 
 	if (isFormData) {
 		const result: Record<string, unknown> = {};
