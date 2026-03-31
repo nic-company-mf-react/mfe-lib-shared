@@ -1,0 +1,1 @@
+Object.defineProperty(exports,Symbol.toStringTag,{value:`Module`}),require(`../chunks/chunk-BlyipBVN.cjs`);const e=require(`../chunks/I18nProvider-CSwoRI4R.cjs`);let t=require(`react-i18next`);exports.I18nProvider=e.t,exports.i18n=e.n,Object.defineProperty(exports,`useTranslation`,{enumerable:!0,get:function(){return t.useTranslation}});

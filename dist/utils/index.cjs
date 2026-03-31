@@ -1,1 +1,1 @@
-Object.defineProperty(exports,Symbol.toStringTag,{value:`Module`});const e=require(`../router-9BQ29X9E.cjs`);exports.createWindowRouter=e.t,exports.registerWindowRouter=e.n;
+Object.defineProperty(exports,Symbol.toStringTag,{value:`Module`});const e=require(`../chunks/router-B7_zaSn1.cjs`);exports.createWindowRouter=e.t,exports.registerWindowRouter=e.n;

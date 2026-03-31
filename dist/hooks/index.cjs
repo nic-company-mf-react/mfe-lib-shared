@@ -1,1 +1,1 @@
-Object.defineProperty(exports,Symbol.toStringTag,{value:`Module`});const e=require(`../hooks-DohFFNhg.cjs`);exports.useApi=e.t;
+Object.defineProperty(exports,Symbol.toStringTag,{value:`Module`});const e=require(`../chunks/hooks-Chnvvzls.cjs`);exports.useApi=e.t;

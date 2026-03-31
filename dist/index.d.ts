@@ -8,3 +8,5 @@ export { useApi } from './hooks';
 export type { IUseApiQueryOptions, IUseApiMutationOptions, UseApiMutationResult } from './hooks';
 export { initApiConfig, getApiConfig, callApi, ApiError } from './api';
 export { makeQueryClient, getQueryClient, createQueryKey } from './query';
+export { i18n, I18nProvider, useTranslation } from './i18n/index';
+export type { TFunction } from 'i18next';

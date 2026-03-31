@@ -1,6 +1,8 @@
 import { type ReactNode, useState, useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from '../../context';
+import { I18nProvider } from '../../i18n/I18nProvider';
+import type { i18n as I18nInstance } from 'i18next';
 
 // Tanstack Query관련 imports ----------------------------
 import { QueryClientProvider, type QueryClientConfig } from '@tanstack/react-query';
@@ -11,6 +13,8 @@ import { getQueryClient } from '../../config/tanstack-query/query-client';
 interface AppProvidersProps {
 	children: ReactNode;
 	queryConfig?: QueryClientConfig;
+	// 테스트 등에서 별도 인스턴스 주입 가능, 기본값은 공유 Singleton 사용
+	i18nInstance?: I18nInstance;
 }
 
 /**
@@ -19,7 +23,7 @@ interface AppProvidersProps {
  * 새로운 Provider 추가 시 이곳에서 관리합니다.
  * Provider 순서는 의존성을 고려하여 배치합니다.
  */
-export function AppProviders({ children, queryConfig }: AppProvidersProps) {
+export function AppProviders({ children, queryConfig, i18nInstance }: AppProvidersProps) {
 	// useState로 QueryClient를 초기화하여 React 생명주기와 동기화
 	const [queryClient] = useState(() => getQueryClient(queryConfig));
 
@@ -31,12 +35,14 @@ export function AppProviders({ children, queryConfig }: AppProvidersProps) {
 
 	const content = (
 		<ThemeProvider>
-			<HelmetProvider>
-				<QueryClientProvider client={queryClient}>
-					{children}
-					{process.env.NODE_ENV === 'development' && <ReactQueryDevtools initialIsOpen={false} />}
-				</QueryClientProvider>
-			</HelmetProvider>
+			<I18nProvider i18n={i18nInstance}>
+				<HelmetProvider>
+					<QueryClientProvider client={queryClient}>
+						{children}
+						{process.env.NODE_ENV === 'development' && <ReactQueryDevtools initialIsOpen={false} />}
+					</QueryClientProvider>
+				</HelmetProvider>
+			</I18nProvider>
 		</ThemeProvider>
 	);
 

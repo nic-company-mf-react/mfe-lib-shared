@@ -19,5 +19,8 @@ export type { IUseApiQueryOptions, IUseApiMutationOptions, UseApiMutationResult 
 export { initApiConfig, getApiConfig, callApi, ApiError } from './api';
 // ── TanStack Query 유틸 ──
 export { makeQueryClient, getQueryClient, createQueryKey } from './query';
+// ── i18n ──
+export { i18n, I18nProvider, useTranslation } from './i18n/index';
+export type { TFunction } from 'i18next';
 // ── 직접 만든 공통 컴포넌트 (추후 추가) ──
 // export { CustomModal } from './components/Modal'

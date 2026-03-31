@@ -42,12 +42,25 @@ export default defineConfig({
 				'hooks/index': resolve(__dirname, 'src/hooks/index.ts'),
 				'api/index': resolve(__dirname, 'src/api/index.ts'),
 				'query/index': resolve(__dirname, 'src/query/index.ts'),
+				'i18n/index': resolve(__dirname, 'src/i18n/index.ts'),
 			},
 			formats: ['es', 'cjs'],
-			fileName: (format, entryName) => `${entryName}.${format === 'es' ? 'js' : 'cjs'}`,
+			//fileName: (format, entryName) => `${entryName}.${format === 'es' ? 'js' : 'cjs'}`,
 		},
 		rollupOptions: {
-			preserveEntrySignatures: 'strict', // ← 추가
+			preserveEntrySignatures: 'strict',
+			output: [
+				{
+					format: 'es',
+					chunkFileNames: 'chunks/[name]-[hash].js',
+					entryFileNames: (chunkInfo) => `${chunkInfo.name}.js`,
+				},
+				{
+					format: 'cjs',
+					chunkFileNames: 'chunks/[name]-[hash].cjs',
+					entryFileNames: (chunkInfo) => `${chunkInfo.name}.cjs`,
+				},
+			],
 			external: [
 				// ← 번들링 방지
 				'react',
@@ -71,6 +84,9 @@ export default defineConfig({
 				'@tanstack/react-query',
 				'react-helmet-async',
 				'@tanstack/react-query-devtools',
+				// i18n
+				'i18next',
+				'react-i18next',
 			],
 		},
 		cssCodeSplit: false,
