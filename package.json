@@ -92,6 +92,8 @@
 	],
 	"scripts": {
 		"dev": "npm run dev -w packages/playground",
+		"storybook": "npm run dev -w packages/storybook",
+		"build:storybook": "npm run build -w packages/storybook",
 		"build:js": "tsc -b && vite build",
 		"build:css": "tailwindcss -i src/styles/components.css -o dist/styles/components.css --minify",
 		"build": "npm run build:js && npm run build:css",
