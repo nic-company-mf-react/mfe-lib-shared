@@ -1,1 +1,0 @@
-function e(e){return{push(t,n){e.navigate(t,n)},replace(t,n){e.navigate(t,{...n,replace:!0})},back(){e.navigate(-1)}}}function t(t){window.$router=e(t)}Object.defineProperty(exports,`n`,{enumerable:!0,get:function(){return t}}),Object.defineProperty(exports,`t`,{enumerable:!0,get:function(){return e}});

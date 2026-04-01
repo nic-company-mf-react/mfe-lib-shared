@@ -1,2 +1,2 @@
-import { n as e, t } from "../chunks/router-DB0Y9j3K.js";
-export { t as createWindowRouter, e as registerWindowRouter };
+import { n as registerWindowRouter, t as createWindowRouter } from "../chunks/router-DXXNgMbI.js";
+export { createWindowRouter, registerWindowRouter };

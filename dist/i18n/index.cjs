@@ -1,1 +1,12 @@
-Object.defineProperty(exports,Symbol.toStringTag,{value:`Module`}),require(`../chunks/chunk-BlyipBVN.cjs`);const e=require(`../chunks/I18nProvider-CSwoRI4R.cjs`);let t=require(`react-i18next`);exports.I18nProvider=e.t,exports.i18n=e.n,Object.defineProperty(exports,`useTranslation`,{enumerable:!0,get:function(){return t.useTranslation}});
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+require("../chunks/chunk-C6SnN1q4.cjs");
+const require_I18nProvider = require("../chunks/I18nProvider-DQwVP4kQ.cjs");
+let react_i18next = require("react-i18next");
+exports.I18nProvider = require_I18nProvider.I18nProvider;
+exports.i18n = require_I18nProvider.i18n;
+Object.defineProperty(exports, "useTranslation", {
+	enumerable: true,
+	get: function() {
+		return react_i18next.useTranslation;
+	}
+});

@@ -1,3 +1,3 @@
-import e from "./base.js";
-import t from "./react.js";
-export { e as base, t as default, t as react };
+import baseConfig from "./base.js";
+import reactConfig from "./react.js";
+export { baseConfig as base, reactConfig as default, reactConfig as react };

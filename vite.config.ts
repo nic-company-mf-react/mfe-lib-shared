@@ -26,6 +26,11 @@ export default defineConfig({
 		}),
 	],
 	build: {
+		// minify: false — 라이브러리는 식별자를 축약하지 않아야 합니다.
+		// Vite 8(Rolldown)은 기본적으로 minify를 활성화하는데, 단일 알파벳으로 축약된
+		// import alias 와 export name 이 겹치면 소비자(mfe-app-main)의 Rolldown 이
+		// `import { t } from 'react'` 처럼 잘못된 코드를 생성합니다.
+		minify: false,
 		lib: {
 			entry: {
 				// JS/TS entries

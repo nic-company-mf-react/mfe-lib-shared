@@ -1,3 +1,3 @@
-import { n as e, t } from "../chunks/I18nProvider-CyN92AHK.js";
-import { useTranslation as n } from "react-i18next";
-export { t as I18nProvider, e as i18n, n as useTranslation };
+import { n as i18n, t as I18nProvider } from "../chunks/I18nProvider-Cxz5vxDd.js";
+import { useTranslation } from "react-i18next";
+export { I18nProvider, i18n, useTranslation };

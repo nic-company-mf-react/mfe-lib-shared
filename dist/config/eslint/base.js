@@ -1,16 +1,20 @@
-import e from "@eslint/js";
-import t from "globals";
-import n from "typescript-eslint";
-import r from "eslint-config-prettier";
+import js from "@eslint/js";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+import eslintConfigPrettier from "eslint-config-prettier";
 //#region src/config/eslint/base.ts
-var i = [
-	e.configs.recommended,
-	...n.configs.recommended,
+/**
+* 모든 앱/패키지에 공통으로 적용되는 기본 ESLint 설정
+* TypeScript, JavaScript 프로젝트에 사용
+*/
+var baseConfig = [
+	js.configs.recommended,
+	...tseslint.configs.recommended,
 	{
 		files: ["**/*.{js,ts,jsx,tsx}"],
 		languageOptions: {
 			ecmaVersion: 2020,
-			globals: t.browser
+			globals: globals.browser
 		},
 		rules: {
 			"@typescript-eslint/no-explicit-any": "off",
@@ -19,7 +23,7 @@ var i = [
 			"@typescript-eslint/no-unused-vars": "warn"
 		}
 	},
-	r
+	eslintConfigPrettier
 ];
 //#endregion
-export { i as default };
+export { baseConfig as default };

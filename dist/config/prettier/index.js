@@ -1,16 +1,16 @@
 //#region src/config/prettier/index.ts
-var e = {
+var prettierConfig = {
 	printWidth: 120,
 	tabWidth: 2,
-	useTabs: !0,
-	semi: !0,
-	singleQuote: !0,
-	jsxSingleQuote: !1,
+	useTabs: true,
+	semi: true,
+	singleQuote: true,
+	jsxSingleQuote: false,
 	trailingComma: "all",
-	bracketSameLine: !1,
-	bracketSpacing: !0,
-	singleAttributePerLine: !0,
+	bracketSameLine: false,
+	bracketSpacing: true,
+	singleAttributePerLine: true,
 	endOfLine: "auto"
 };
 //#endregion
-export { e as default };
+export { prettierConfig as default };
