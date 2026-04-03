@@ -25,7 +25,7 @@ const config: StorybookConfig = {
 		name: '@storybook/react-vite',
 		options: {},
 	},
-	// storybook 10.3.3 버전에서 삭제되었습니다.
+	// storybook 10.3.3 버전에서 삭제되었습니다. 각 stories.tsx 파일에서 tags: ['autodocs'] 주석처리 해야함
 	//docs: {
 	//	autodocs: 'tag',
 	//},

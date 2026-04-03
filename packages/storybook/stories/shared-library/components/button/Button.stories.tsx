@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from 'storybook/test';
-import { Button } from '@nic/mfe-lib-shared/components/ui';
+import { Button, buttonVariantsConfig } from '@nic/mfe-lib-shared/components/ui';
 import React from 'react';
+
+const variantOptions = Object.keys(buttonVariantsConfig.variant) as (keyof typeof buttonVariantsConfig.variant)[];
+const sizeOptions = Object.keys(buttonVariantsConfig.size) as (keyof typeof buttonVariantsConfig.size)[];
 
 const meta = {
 	title: 'Components/Button',
@@ -36,49 +39,41 @@ import { Button } from '@nic/mfe-lib-shared/components';
 	argTypes: {
 		variant: {
 			control: 'select',
-			options: ['default', 'outline', 'secondary', 'ghost', 'destructive', 'link'],
+			options: variantOptions,
 			description: '버튼의 시각적 스타일',
 			table: {
-				type: {
-					summary: "'default' | 'outline' | 'secondary' | 'ghost' | 'destructive' | 'link'",
-				},
 				defaultValue: { summary: 'default' },
 			},
 		},
 		size: {
 			control: 'select',
-			options: ['default', 'xs', 'sm', 'lg', 'icon', 'icon-xs', 'icon-sm', 'icon-lg'],
+			options: sizeOptions,
 			description: '버튼의 크기',
 			table: {
-				type: {
-					summary: "'default' | 'xs' | 'sm' | 'lg' | 'icon' | 'icon-xs' | 'icon-sm' | 'icon-lg'",
-				},
 				defaultValue: { summary: 'default' },
-			},
-		},
-		disabled: {
-			control: 'boolean',
-			description: '버튼 비활성화 여부',
-			table: {
-				type: { summary: 'boolean' },
-				defaultValue: { summary: 'false' },
 			},
 		},
 		children: {
 			control: 'text',
-			description: '버튼 내부 콘텐츠 (텍스트 또는 ReactNode)',
+			description: '버튼 내부 텍스트 또는 노드',
+		},
+		disabled: {
+			control: 'boolean',
+			description: '비활성화 상태',
 			table: {
-				type: { summary: 'React.ReactNode' },
+				defaultValue: { summary: 'false' },
 			},
 		},
 		onClick: {
-			description: '버튼 클릭 이벤트 핸들러',
-			table: {
-				type: { summary: '() => void' },
-			},
+			action: 'clicked',
+			description: '클릭 이벤트 핸들러',
 		},
 	},
 	args: {
+		children: '버튼',
+		variant: 'default',
+		size: 'default',
+		disabled: false,
 		onClick: fn(),
 	},
 } satisfies Meta<typeof Button>;
@@ -87,10 +82,39 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
+ * 기본(Primary) 스타일 버튼입니다. 주요 행동 유도에 사용합니다.
+ */
+export const Primary: Story = {
+	name: 'Primary',
+	args: {
+		children: '기본 버튼',
+		variant: 'default',
+	},
+};
+
+export const AlertOnClick: Story = {
+	name: '버튼 클릭 예시',
+	render: (args) => (
+		<Button
+			{...args}
+			onClick={() => alert('버튼이 클릭되었습니다!')}
+		>
+			클릭해보세요
+		</Button>
+	),
+};
+
+/**
  * 클릭 이벤트가 발생할 때 버튼 상태가 변하는 인터랙티브 예시입니다.
+ * Controls 패널의 variant, size, disabled 변경이 "초기화" 버튼에 실시간 반영됩니다.
  */
 export const InteractiveExample: Story = {
 	name: '인터랙티브 예시',
+	args: {
+		children: '초기화',
+		variant: 'default',
+		size: 'default',
+	},
 	render: (args) => {
 		const [count, setCount] = React.useState(0);
 		return (
@@ -106,6 +130,7 @@ export const InteractiveExample: Story = {
 				<div style={{ display: 'flex', gap: '8px' }}>
 					<Button
 						variant="default"
+						size="default"
 						onClick={() => setCount((c) => c + 1)}
 					>
 						증가
@@ -114,23 +139,12 @@ export const InteractiveExample: Story = {
 						{...args}
 						onClick={() => setCount(0)}
 					>
-						초기화
+						{args.children}
 					</Button>
 				</div>
 			</div>
 		);
 	},
-};
-
-/**
- * 기본(Primary) 스타일 버튼입니다. 주요 행동 유도에 사용합니다.
- */
-export const Primary: Story = {
-	args: {
-		children: '기본 버튼',
-		variant: 'default',
-	},
-	name: 'Primary',
 };
 
 /**
@@ -164,7 +178,7 @@ export const Small: Story = {
 };
 
 /**
- * 중간 크기(Medium) 버튼입니다. 기본값입니다.
+ * 중간 크기(Medium) 버튼입니다.
  */
 export const Medium: Story = {
 	args: {
@@ -195,60 +209,71 @@ export const Disabled: Story = {
 
 /**
  * 모든 variant를 한눈에 비교하는 예시입니다.
+ * buttonVariantsConfig에서 동적으로 variant 목록을 가져옵니다.
  */
 export const AllVariants: Story = {
 	name: '모든 Variant 비교',
+	parameters: {
+		controls: { disable: true },
+	},
 	render: () => (
-		<div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-			<Button variant="default">Primary</Button>
-			<Button variant="secondary">Secondary</Button>
-			<Button variant="outline">Outline</Button>
-			<Button variant="ghost">Ghost</Button>
-			<Button variant="destructive">Destructive</Button>
+		<div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+			{variantOptions.map((variant) => (
+				<Button
+					key={variant}
+					variant={variant}
+				>
+					{variant}
+				</Button>
+			))}
 		</div>
 	),
 };
 
 /**
  * 모든 size를 한눈에 비교하는 예시입니다.
+ * buttonVariantsConfig에서 동적으로 size 목록을 가져옵니다.
+ * icon 계열 size는 아이콘 전용이므로 단축 레이블로 표시합니다.
  */
 export const AllSizes: Story = {
 	name: '모든 Size 비교',
+	parameters: {
+		controls: { disable: true },
+	},
 	render: () => (
-		<div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-			<Button size="xs">XSmall</Button>
-			<Button size="sm">Small</Button>
-			<Button size="default">Default</Button>
-			<Button size="lg">Large</Button>
+		<div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+			{sizeOptions.map((size) => (
+				<Button
+					key={size}
+					size={size}
+				>
+					{size.startsWith('icon') ? '★' : size}
+				</Button>
+			))}
 		</div>
 	),
 };
 
 /**
  * Disabled 상태를 각 variant와 함께 비교합니다.
+ * buttonVariantsConfig에서 동적으로 variant 목록을 가져옵니다.
  */
 export const DisabledVariants: Story = {
 	name: 'Disabled 상태 비교',
+	parameters: {
+		controls: { disable: true },
+	},
 	render: () => (
-		<div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-			<Button
-				variant="default"
-				disabled
-			>
-				Primary
-			</Button>
-			<Button
-				variant="secondary"
-				disabled
-			>
-				Secondary
-			</Button>
-			<Button
-				variant="outline"
-				disabled
-			>
-				Outline
-			</Button>
+		<div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+			{variantOptions.map((variant) => (
+				<Button
+					key={variant}
+					variant={variant}
+					disabled
+				>
+					{variant}
+				</Button>
+			))}
 		</div>
 	),
 };

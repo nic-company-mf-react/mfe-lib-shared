@@ -1,0 +1,83 @@
+import { Meta, Canvas, Controls, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+`Button` 컴포넌트는 `@nic/mfe-lib-shared`에서 제공하는 기본 버튼 UI입니다.
+
+
+
+
+
+
+## 임포트
+```tsx
+import { Button } from '@nic/mfe-lib-shared/components/ui';
+// 또는
+import { Button } from '@nic/mfe-lib-shared/components';
+```
+
+
+
+
+
+
+## 기본 사용법
+```tsx
+<Button variant="default" size="default" onClick={() => console.log('clicked')}>
+  버튼 텍스트
+</Button>
+```
+
+
+
+
+
+
+## 인터랙티브 Prop 변경 해보기
+아래 Controls를 통해 `variant`, `size`, `disabled` 등을 변경하여 버튼 외형을 실시간으로 확인하세요.
+
+<Canvas of={ButtonStories.AlertOnClick} />
+<Controls of={ButtonStories.AlertOnClick} />
+
+
+
+
+
+
+
+
+
+## Button Props
+<ArgTypes of={ButtonStories} />
+
+
+
+
+
+
+
+
+
+
+## 예시
+
+### 인터랙티브 예시
+클릭 이벤트와 함께 버튼 상태가 변하는 데모입니다. `variant`, `size`, `disabled` 변경이 "초기화" 버튼에 실시간 반영됩니다.
+<Canvas of={ButtonStories.InteractiveExample} />
+
+
+### 모든 Variant 비교
+`buttonVariantsConfig`에서 동적으로 가져온 모든 variant를 한눈에 비교합니다.
+<Canvas of={ButtonStories.AllVariants} />
+
+
+### 모든 Size 비교
+`buttonVariantsConfig`에서 동적으로 가져온 모든 size를 한눈에 비교합니다.
+<Canvas of={ButtonStories.AllSizes} />
+
+
+### Disabled 상태 비교
+각 variant별 비활성화 상태를 비교합니다.
+<Canvas of={ButtonStories.DisabledVariants} />
