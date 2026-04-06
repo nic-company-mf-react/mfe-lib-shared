@@ -1,2 +1,2 @@
-import { n as buttonVariants, t as Button } from "../../chunks/button-DATmWCYH.js";
-export { Button, buttonVariants };
+import { n as buttonVariants, r as buttonVariantsConfig, t as Button } from "../../chunks/button-DnvgnuK7.js";
+export { Button, buttonVariants, buttonVariantsConfig };

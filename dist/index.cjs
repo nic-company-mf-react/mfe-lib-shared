@@ -1,6 +1,6 @@
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 require("./chunks/chunk-C6SnN1q4.cjs");
-const require_button = require("./chunks/button-CQ8aFAeb.cjs");
+const require_button = require("./chunks/button-C2yIfINY.cjs");
 const require_context = require("./chunks/context-DF0kIuyF.cjs");
 const require_I18nProvider = require("./chunks/I18nProvider-DQwVP4kQ.cjs");
 const require_CodeBlockClient = require("./chunks/CodeBlockClient-CDGPMomJ.cjs");
