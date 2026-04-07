@@ -1,5 +1,9 @@
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
-const require_button = require("../../chunks/button-C2yIfINY.cjs");
-exports.Button = require_button.Button;
-exports.buttonVariants = require_button.buttonVariants;
-exports.buttonVariantsConfig = require_button.buttonVariantsConfig;
+const require_accordion = require("../../chunks/accordion-B8t9wwoE.cjs");
+exports.Accordion = require_accordion.Accordion;
+exports.AccordionContent = require_accordion.AccordionContent;
+exports.AccordionItem = require_accordion.AccordionItem;
+exports.AccordionTrigger = require_accordion.AccordionTrigger;
+exports.Button = require_accordion.Button;
+exports.buttonVariants = require_accordion.buttonVariants;
+exports.buttonVariantsConfig = require_accordion.buttonVariantsConfig;
