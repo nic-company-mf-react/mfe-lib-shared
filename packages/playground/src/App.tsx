@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import ButtonPage from './pages/ui-component/ButtonPage';
 import DataGridPage from './pages/grid/DataGrid';
+import AccordionPage from './pages/ui-component/AccordionPage';
 
-type PageKey = 'button' | 'dataGrid';
+type PageKey = 'button' | 'accordion' | 'dataGrid';
 
 const navItems: { key: PageKey; label: string; group: string }[] = [
 	{ key: 'button', label: 'Button', group: 'UI Components' },
+	{ key: 'accordion', label: 'Accordion', group: 'UI Components' },
 	{ key: 'dataGrid', label: 'Data Grid', group: 'Grid' },
 ];
 
 const pageMap: Record<PageKey, React.ReactNode> = {
 	button: <ButtonPage />,
+	accordion: <AccordionPage />,
 	dataGrid: <DataGridPage />,
 };
 
@@ -30,9 +33,7 @@ export default function App() {
 					<nav className="space-y-4">
 						{groups.map((group) => (
 							<div key={group}>
-								<p className="text-xs font-medium text-muted-foreground uppercase tracking-wider px-3 mb-1">
-									{group}
-								</p>
+								<p className="text-xs font-medium text-muted-foreground uppercase tracking-wider px-3 mb-1">{group}</p>
 								<div className="space-y-0.5">
 									{navItems
 										.filter((item) => item.group === group)
