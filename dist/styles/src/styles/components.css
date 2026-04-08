@@ -1,6 +1,10 @@
 /* 빌드 후 생성되는 css 파일용*/
 /* Tailwind 엔진 */
-@import 'tailwindcss';
+/*@import 'tailwindcss';*/
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
+
+@import 'shadcn/tailwind.css';
 /* 디자인 토큰 (CSS 변수 + @theme) */
 @import './tokens.css';
 /* shadcn 컴포넌트만 스캔 - button.tsx 등의 클래스를 추출 */
