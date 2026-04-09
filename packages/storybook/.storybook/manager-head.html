@@ -1,33 +1,80 @@
 <script src="/storybook-config.js"></script>
 <script>
 	const targetOrigin = window.__SB_CONFIG__?.parentOrigin;
-	const oldHeight = localStorage.getItem('__SB_OLD_HEIGHT__');
-	const postHeight = () => {
-		if (window.parent === window) {
-			setTimeout(postHeight, 1000);
-			return;
-		}
 
-		const height = document.body.clientHeight;
-		console.log('height22222:', height, oldHeight);
-		if (height > 0) {
-			//if (height !== oldHeight) {
-			localStorage.setItem('__SB_OLD_HEIGHT__', height);
-			window.parent.postMessage(
+	//const postHeight = () => {
+	//	if (window.parent === window) {
+	//		setTimeout(postHeight, 1000);
+	//		return;
+	//	}
+
+	//	const height = document.body.clientHeight;
+	//	console.log('height22222:', height, oldHeight);
+	//	if (height > 0) {
+	//		//if (height !== oldHeight) {
+	//		localStorage.setItem('__SB_OLD_HEIGHT__', height);
+	//		window.parent.postMessage(
+	//			{
+	//				type: 'loaded',
+	//				source: 'storybook-manager',
+	//				height,
+	//			},
+	//			targetOrigin,
+	//		);
+	//		//}
+	//	} else {
+	//		setTimeout(postHeight, 1000);
+	//	}
+	//};
+
+	//window.addEventListener('load', () => {
+	//	setTimeout(() => postHeight(), 2000);
+	//});
+
+	// ===============================================================
+	const checkScrollChange = (entries) => {
+		const currentScrollHeight = document.documentElement.scrollHeight;
+		const oldHeight = localStorage.getItem('__SB_OLD_HEIGHT__') || 0;
+		const gapH = 40;
+		if (currentScrollHeight + gapH !== Number(oldHeight)) {
+			localStorage.setItem('__SB_OLD_HEIGHT__', currentScrollHeight + gapH);
+			window.parent.parent.postMessage(
 				{
 					type: 'loaded',
 					source: 'storybook-manager',
-					height,
+					height: currentScrollHeight + gapH,
 				},
 				targetOrigin,
 			);
-			//}
-		} else {
-			setTimeout(postHeight, 1000);
 		}
 	};
 
-	window.addEventListener('load', () => {
-		setTimeout(() => postHeight(), 2000);
+	const resizeObserver = new ResizeObserver(checkScrollChange);
+
+	const mutationObserver = new MutationObserver(checkScrollChange);
+
+	window.addEventListener('DOMContentLoaded', () => {
+		resizeObserver.observe(document.body);
+		mutationObserver.observe(document.body, { childList: true, subtree: true });
 	});
+	/*
+	entries.forEach((entry) => {
+			const height = entry.contentRect.height;
+			console.log('height22222:', height, oldHeight);
+			if (height > 0) {
+				localStorage.setItem('__SB_OLD_HEIGHT__', height);
+			}
+		});
+	*/
+	/*
+	(mutations) => {
+		mutations.forEach((mutation) => {
+			const height = mutation.target.clientHeight;
+			console.log('height22222:', height, oldHeight);
+			if (height > 0) {
+				localStorage.setItem('__SB_OLD_HEIGHT__', height);
+			}
+		});
+	}
+	*/
 </script>
