@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 const __dirname = import.meta.dirname;
 
 const config: StorybookConfig = {
+	staticDirs: ['../public'],
 	stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 	addons: [
 		{
@@ -29,8 +30,9 @@ const config: StorybookConfig = {
 	//docs: {
 	//	autodocs: 'tag',
 	//},
-	async viteFinal(config) {
+	async viteFinal(config, { configType }) {
 		return mergeConfig(config, {
+			base: configType === 'PRODUCTION' ? '/2026/mfe-multirepo/storybook/' : '/',
 			plugins: [tailwindcss()],
 			resolve: {
 				alias: [
