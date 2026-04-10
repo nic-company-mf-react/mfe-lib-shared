@@ -1,37 +1,7 @@
 <script src="/storybook-config.js"></script>
+<!-- Storybook을 다른 도메인에서 iFrame같은 요소에 postMessage 전달을 위한 로직(BEGIN) ================================= -->
 <script>
 	const targetOrigin = window.__SB_CONFIG__?.parentOrigin;
-
-	//const postHeight = () => {
-	//	if (window.parent === window) {
-	//		setTimeout(postHeight, 1000);
-	//		return;
-	//	}
-
-	//	const height = document.body.clientHeight;
-	//	console.log('height22222:', height, oldHeight);
-	//	if (height > 0) {
-	//		//if (height !== oldHeight) {
-	//		localStorage.setItem('__SB_OLD_HEIGHT__', height);
-	//		window.parent.postMessage(
-	//			{
-	//				type: 'loaded',
-	//				source: 'storybook-manager',
-	//				height,
-	//			},
-	//			targetOrigin,
-	//		);
-	//		//}
-	//	} else {
-	//		setTimeout(postHeight, 1000);
-	//	}
-	//};
-
-	//window.addEventListener('load', () => {
-	//	setTimeout(() => postHeight(), 2000);
-	//});
-
-	// ===============================================================
 	const checkScrollChange = (entries) => {
 		const currentScrollHeight = document.documentElement.scrollHeight;
 		const oldHeight = localStorage.getItem('__SB_OLD_HEIGHT__') || 0;
@@ -50,31 +20,9 @@
 	};
 
 	const resizeObserver = new ResizeObserver(checkScrollChange);
-
 	const mutationObserver = new MutationObserver(checkScrollChange);
-
 	window.addEventListener('DOMContentLoaded', () => {
 		resizeObserver.observe(document.body);
 		mutationObserver.observe(document.body, { childList: true, subtree: true });
 	});
-	/*
-	entries.forEach((entry) => {
-			const height = entry.contentRect.height;
-			console.log('height22222:', height, oldHeight);
-			if (height > 0) {
-				localStorage.setItem('__SB_OLD_HEIGHT__', height);
-			}
-		});
-	*/
-	/*
-	(mutations) => {
-		mutations.forEach((mutation) => {
-			const height = mutation.target.clientHeight;
-			console.log('height22222:', height, oldHeight);
-			if (height > 0) {
-				localStorage.setItem('__SB_OLD_HEIGHT__', height);
-			}
-		});
-	}
-	*/
 </script>
