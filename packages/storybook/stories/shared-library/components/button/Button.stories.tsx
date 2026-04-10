@@ -25,9 +25,9 @@ import { Button } from '@nic/mfe-lib-shared/components';
 \`\`\`
 
 ### 기본 사용법
-
+Button 컴포넌트를 화면에 표시하기 위한 기본 사용법입니다.
 \`\`\`tsx
-<Button variant="default" size="default" onClick={() => console.log('clicked')}>
+<Button>
   버튼 텍스트
 </Button>
 \`\`\`
@@ -82,18 +82,33 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * 기본(Primary) 스타일 버튼입니다. 주요 행동 유도에 사용합니다.
+ * 기본(Default) 스타일 버튼입니다. 주요 행동 유도에 사용합니다.
  */
-export const Primary: Story = {
-	name: 'Primary',
+export const Default: Story = {
+	name: 'Default',
 	args: {
 		children: '기본 버튼',
 		variant: 'default',
+		size: 'default',
 	},
 };
 
 export const AlertOnClick: Story = {
 	name: '버튼 클릭 예시',
+	args: {
+		variant: 'default',
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `
+<Button onClick={() => alert('버튼이 클릭되었습니다!')}>
+  클릭해보세요
+</Button>
+`,
+			},
+		},
+	},
 	render: (args) => (
 		<Button
 			{...args}
@@ -114,6 +129,40 @@ export const InteractiveExample: Story = {
 		children: '초기화',
 		variant: 'default',
 		size: 'default',
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `const [count, setCount] = React.useState(0);
+
+<div
+	style={{
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '12px',
+		alignItems: 'center',
+	}}
+>
+	<p>클릭 횟수: {count}</p>
+	<div style={{ display: 'flex', gap: '8px' }}>
+		<Button
+			variant="default"
+			size="default"
+			onClick={() => setCount((c) => c + 1)}
+		>
+			증가
+		</Button>
+		<Button
+			{...args}
+			onClick={() => setCount(0)}
+		>
+			{args.children}
+		</Button>
+	</div>
+</div>
+`,
+			},
+		},
 	},
 	render: (args) => {
 		const [count, setCount] = React.useState(0);
@@ -148,56 +197,6 @@ export const InteractiveExample: Story = {
 };
 
 /**
- * 보조(Secondary) 스타일 버튼입니다. 부차적인 행동에 사용합니다.
- */
-export const Secondary: Story = {
-	args: {
-		children: '보조 버튼',
-		variant: 'secondary',
-	},
-};
-
-/**
- * 아웃라인(Outline) 스타일 버튼입니다. 덜 강조된 행동에 사용합니다.
- */
-export const Outline: Story = {
-	args: {
-		children: '아웃라인 버튼',
-		variant: 'outline',
-	},
-};
-
-/**
- * 작은 크기(Small) 버튼입니다.
- */
-export const Small: Story = {
-	args: {
-		children: '작은 버튼',
-		size: 'xs',
-	},
-};
-
-/**
- * 중간 크기(Medium) 버튼입니다.
- */
-export const Medium: Story = {
-	args: {
-		children: '중간 버튼',
-		size: 'sm',
-	},
-};
-
-/**
- * 큰 크기(Large) 버튼입니다.
- */
-export const Large: Story = {
-	args: {
-		children: '큰 버튼',
-		size: 'lg',
-	},
-};
-
-/**
  * 비활성화(Disabled) 상태의 버튼입니다. 상호작용이 불가능합니다.
  */
 export const Disabled: Story = {
@@ -209,7 +208,6 @@ export const Disabled: Story = {
 
 /**
  * 모든 variant를 한눈에 비교하는 예시입니다.
- * buttonVariantsConfig에서 동적으로 variant 목록을 가져옵니다.
  */
 export const AllVariants: Story = {
 	name: '모든 Variant 비교',
@@ -232,7 +230,6 @@ export const AllVariants: Story = {
 
 /**
  * 모든 size를 한눈에 비교하는 예시입니다.
- * buttonVariantsConfig에서 동적으로 size 목록을 가져옵니다.
  * icon 계열 size는 아이콘 전용이므로 단축 레이블로 표시합니다.
  */
 export const AllSizes: Story = {
@@ -256,7 +253,6 @@ export const AllSizes: Story = {
 
 /**
  * Disabled 상태를 각 variant와 함께 비교합니다.
- * buttonVariantsConfig에서 동적으로 variant 목록을 가져옵니다.
  */
 export const DisabledVariants: Story = {
 	name: 'Disabled 상태 비교',
