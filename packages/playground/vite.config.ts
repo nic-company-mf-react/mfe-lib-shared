@@ -5,6 +5,9 @@ import path from 'path';
 
 export default defineConfig({
 	plugins: [react(), tailwindcss()],
+	server: {
+		port: 6007,
+	},
 	resolve: {
 		alias: {
 			// 순서가 중요. 더 구체적인 경로가 더 높은 우선순위를 가짐
