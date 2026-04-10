@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@nic/mfe-lib-shared/components/ui';
 import React from 'react';
 
+const singleValue = { 'basic-1': 'basic-1', 'basic-2': 'basic-2' };
+
 const meta = {
 	title: 'Components/Accordion',
 	component: Accordion,
@@ -45,6 +47,14 @@ import {
 	},
 	tags: ['autodocs'],
 	argTypes: {
+		defaultValue: {
+			control: 'object',
+			description: '초기 열림 항목',
+			table: {
+				type: { summary: 'string[]' },
+				defaultValue: { summary: '[]' },
+			},
+		},
 		multiple: {
 			control: 'boolean',
 			description: '여러 패널을 동시에 열 수 있는지',
@@ -64,21 +74,35 @@ export const Single: Story = {
 	name: '단일 열림',
 	args: {
 		multiple: false,
+		defaultValue: ['basic-1'],
 	},
-	render: () => (
-		<div className="w-full max-w-xl">
-			<Accordion defaultValue={['basic-1']}>
-				<AccordionItem value="basic-1">
-					<AccordionTrigger>첫 번째 항목</AccordionTrigger>
-					<AccordionContent>첫 번째 패널 내용입니다.</AccordionContent>
-				</AccordionItem>
-				<AccordionItem value="basic-2">
-					<AccordionTrigger>두 번째 항목</AccordionTrigger>
-					<AccordionContent>두 번째 패널 내용입니다.</AccordionContent>
-				</AccordionItem>
-			</Accordion>
-		</div>
-	),
+	render: (args) => {
+		const { defaultValue: dv, ...rest } = args;
+		const open =
+			typeof dv === 'string'
+				? dv
+						.split(',')
+						.map((s) => s.trim())
+						.filter(Boolean)
+				: dv;
+		return (
+			<div className="w-full max-w-xl">
+				<Accordion
+					{...rest}
+					defaultValue={open}
+				>
+					<AccordionItem value="basic-1">
+						<AccordionTrigger>첫 번째 항목</AccordionTrigger>
+						<AccordionContent>첫 번째 패널 내용입니다.</AccordionContent>
+					</AccordionItem>
+					<AccordionItem value="basic-2">
+						<AccordionTrigger>두 번째 항목</AccordionTrigger>
+						<AccordionContent>두 번째 패널 내용입니다.</AccordionContent>
+					</AccordionItem>
+				</Accordion>
+			</div>
+		);
+	},
 };
 
 /** multiple + 기본으로 두 패널 열림 */
