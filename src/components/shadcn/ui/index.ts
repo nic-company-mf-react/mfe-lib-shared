@@ -11,6 +11,19 @@ export {
 } from './button-group';
 export { Calendar, CalendarDayButton } from './calendar';
 export { Checkbox } from './checkbox';
+export { Input } from './input';
+export {
+	Dialog,
+	DialogClose,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogOverlay,
+	DialogPortal,
+	DialogTitle,
+	DialogTrigger,
+} from './dialog';
 export {
 	type CarouselApi,
 	Carousel,

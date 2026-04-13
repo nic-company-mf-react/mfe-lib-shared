@@ -1,6 +1,7 @@
 import { H as cn, I as ChevronDown, L as Check, R as createLucideIcon, U as cva, z as Button } from "./select-CKR0KtgH.js";
 import { jsx, jsxs } from "react/jsx-runtime";
 import * as React$1 from "react";
+import { Dialog } from "@base-ui/react/dialog";
 import { Combobox } from "@base-ui/react";
 import { Input } from "@base-ui/react/input";
 var X = createLucideIcon("x", [["path", {
@@ -10,6 +11,90 @@ var X = createLucideIcon("x", [["path", {
 	d: "m6 6 12 12",
 	key: "d8bk6v"
 }]]);
+//#endregion
+//#region src/components/shadcn/ui/dialog.tsx
+function Dialog$1({ ...props }) {
+	return /* @__PURE__ */ jsx(Dialog.Root, {
+		"data-slot": "dialog",
+		...props
+	});
+}
+function DialogTrigger({ ...props }) {
+	return /* @__PURE__ */ jsx(Dialog.Trigger, {
+		"data-slot": "dialog-trigger",
+		...props
+	});
+}
+function DialogPortal({ ...props }) {
+	return /* @__PURE__ */ jsx(Dialog.Portal, {
+		"data-slot": "dialog-portal",
+		...props
+	});
+}
+function DialogClose({ ...props }) {
+	return /* @__PURE__ */ jsx(Dialog.Close, {
+		"data-slot": "dialog-close",
+		...props
+	});
+}
+function DialogOverlay({ className, ...props }) {
+	return /* @__PURE__ */ jsx(Dialog.Backdrop, {
+		"data-slot": "dialog-overlay",
+		className: cn("fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0", className),
+		...props
+	});
+}
+function DialogContent({ className, children, showCloseButton = true, ...props }) {
+	return /* @__PURE__ */ jsxs(DialogPortal, { children: [/* @__PURE__ */ jsx(DialogOverlay, {}), /* @__PURE__ */ jsxs(Dialog.Popup, {
+		"data-slot": "dialog-content",
+		className: cn("fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl bg-popover p-4 text-sm text-popover-foreground ring-1 ring-foreground/10 duration-100 outline-none sm:max-w-sm data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95", className),
+		...props,
+		children: [children, showCloseButton && /* @__PURE__ */ jsxs(Dialog.Close, {
+			"data-slot": "dialog-close",
+			render: /* @__PURE__ */ jsx(Button, {
+				variant: "ghost",
+				className: "absolute top-2 right-2",
+				size: "icon-sm"
+			}),
+			children: [/* @__PURE__ */ jsx(X, {}), /* @__PURE__ */ jsx("span", {
+				className: "sr-only",
+				children: "Close"
+			})]
+		})]
+	})] });
+}
+function DialogHeader({ className, ...props }) {
+	return /* @__PURE__ */ jsx("div", {
+		"data-slot": "dialog-header",
+		className: cn("flex flex-col gap-2", className),
+		...props
+	});
+}
+function DialogFooter({ className, showCloseButton = false, children, ...props }) {
+	return /* @__PURE__ */ jsxs("div", {
+		"data-slot": "dialog-footer",
+		className: cn("-mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t bg-muted/50 p-4 sm:flex-row sm:justify-end", className),
+		...props,
+		children: [children, showCloseButton && /* @__PURE__ */ jsx(Dialog.Close, {
+			render: /* @__PURE__ */ jsx(Button, { variant: "outline" }),
+			children: "Close"
+		})]
+	});
+}
+function DialogTitle({ className, ...props }) {
+	return /* @__PURE__ */ jsx(Dialog.Title, {
+		"data-slot": "dialog-title",
+		className: cn("text-base leading-none font-medium", className),
+		...props
+	});
+}
+function DialogDescription({ className, ...props }) {
+	return /* @__PURE__ */ jsx(Dialog.Description, {
+		"data-slot": "dialog-description",
+		className: cn("text-sm text-muted-foreground *:[a]:underline *:[a]:underline-offset-3 *:[a]:hover:text-foreground", className),
+		...props
+	});
+}
 //#endregion
 //#region src/components/shadcn/ui/input.tsx
 function Input$1({ className, type, ...props }) {
@@ -231,4 +316,4 @@ function useComboboxAnchor() {
 	return React$1.useRef(null);
 }
 //#endregion
-export { ComboboxCollection as a, ComboboxGroup as c, ComboboxLabel as d, ComboboxList as f, useComboboxAnchor as g, ComboboxValue as h, ComboboxChipsInput as i, ComboboxInput as l, ComboboxTrigger as m, ComboboxChip as n, ComboboxContent as o, ComboboxSeparator as p, ComboboxChips as r, ComboboxEmpty as s, Combobox$1 as t, ComboboxItem as u };
+export { DialogHeader as C, DialogTrigger as D, DialogTitle as E, DialogFooter as S, DialogPortal as T, Input$1 as _, ComboboxCollection as a, DialogContent as b, ComboboxGroup as c, ComboboxLabel as d, ComboboxList as f, useComboboxAnchor as g, ComboboxValue as h, ComboboxChipsInput as i, ComboboxInput as l, ComboboxTrigger as m, ComboboxChip as n, ComboboxContent as o, ComboboxSeparator as p, ComboboxChips as r, ComboboxEmpty as s, Combobox$1 as t, ComboboxItem as u, Dialog$1 as v, DialogOverlay as w, DialogDescription as x, DialogClose as y };

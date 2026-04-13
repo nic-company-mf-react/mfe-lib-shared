@@ -3,6 +3,7 @@ const require_select = require("./select-DibxGfva.cjs");
 let react_jsx_runtime = require("react/jsx-runtime");
 let react = require("react");
 react = require_chunk.__toESM(react);
+let _base_ui_react_dialog = require("@base-ui/react/dialog");
 let _base_ui_react = require("@base-ui/react");
 let _base_ui_react_input = require("@base-ui/react/input");
 var X = require_select.createLucideIcon("x", [["path", {
@@ -12,6 +13,90 @@ var X = require_select.createLucideIcon("x", [["path", {
 	d: "m6 6 12 12",
 	key: "d8bk6v"
 }]]);
+//#endregion
+//#region src/components/shadcn/ui/dialog.tsx
+function Dialog({ ...props }) {
+	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_base_ui_react_dialog.Dialog.Root, {
+		"data-slot": "dialog",
+		...props
+	});
+}
+function DialogTrigger({ ...props }) {
+	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_base_ui_react_dialog.Dialog.Trigger, {
+		"data-slot": "dialog-trigger",
+		...props
+	});
+}
+function DialogPortal({ ...props }) {
+	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_base_ui_react_dialog.Dialog.Portal, {
+		"data-slot": "dialog-portal",
+		...props
+	});
+}
+function DialogClose({ ...props }) {
+	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_base_ui_react_dialog.Dialog.Close, {
+		"data-slot": "dialog-close",
+		...props
+	});
+}
+function DialogOverlay({ className, ...props }) {
+	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_base_ui_react_dialog.Dialog.Backdrop, {
+		"data-slot": "dialog-overlay",
+		className: require_select.cn("fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0", className),
+		...props
+	});
+}
+function DialogContent({ className, children, showCloseButton = true, ...props }) {
+	return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(DialogPortal, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(DialogOverlay, {}), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(_base_ui_react_dialog.Dialog.Popup, {
+		"data-slot": "dialog-content",
+		className: require_select.cn("fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl bg-popover p-4 text-sm text-popover-foreground ring-1 ring-foreground/10 duration-100 outline-none sm:max-w-sm data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95", className),
+		...props,
+		children: [children, showCloseButton && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(_base_ui_react_dialog.Dialog.Close, {
+			"data-slot": "dialog-close",
+			render: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(require_select.Button, {
+				variant: "ghost",
+				className: "absolute top-2 right-2",
+				size: "icon-sm"
+			}),
+			children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(X, {}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+				className: "sr-only",
+				children: "Close"
+			})]
+		})]
+	})] });
+}
+function DialogHeader({ className, ...props }) {
+	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
+		"data-slot": "dialog-header",
+		className: require_select.cn("flex flex-col gap-2", className),
+		...props
+	});
+}
+function DialogFooter({ className, showCloseButton = false, children, ...props }) {
+	return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
+		"data-slot": "dialog-footer",
+		className: require_select.cn("-mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t bg-muted/50 p-4 sm:flex-row sm:justify-end", className),
+		...props,
+		children: [children, showCloseButton && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_base_ui_react_dialog.Dialog.Close, {
+			render: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(require_select.Button, { variant: "outline" }),
+			children: "Close"
+		})]
+	});
+}
+function DialogTitle({ className, ...props }) {
+	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_base_ui_react_dialog.Dialog.Title, {
+		"data-slot": "dialog-title",
+		className: require_select.cn("text-base leading-none font-medium", className),
+		...props
+	});
+}
+function DialogDescription({ className, ...props }) {
+	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_base_ui_react_dialog.Dialog.Description, {
+		"data-slot": "dialog-description",
+		className: require_select.cn("text-sm text-muted-foreground *:[a]:underline *:[a]:underline-offset-3 *:[a]:hover:text-foreground", className),
+		...props
+	});
+}
 //#endregion
 //#region src/components/shadcn/ui/input.tsx
 function Input({ className, type, ...props }) {
@@ -321,6 +406,72 @@ Object.defineProperty(exports, "ComboboxValue", {
 	enumerable: true,
 	get: function() {
 		return ComboboxValue;
+	}
+});
+Object.defineProperty(exports, "Dialog", {
+	enumerable: true,
+	get: function() {
+		return Dialog;
+	}
+});
+Object.defineProperty(exports, "DialogClose", {
+	enumerable: true,
+	get: function() {
+		return DialogClose;
+	}
+});
+Object.defineProperty(exports, "DialogContent", {
+	enumerable: true,
+	get: function() {
+		return DialogContent;
+	}
+});
+Object.defineProperty(exports, "DialogDescription", {
+	enumerable: true,
+	get: function() {
+		return DialogDescription;
+	}
+});
+Object.defineProperty(exports, "DialogFooter", {
+	enumerable: true,
+	get: function() {
+		return DialogFooter;
+	}
+});
+Object.defineProperty(exports, "DialogHeader", {
+	enumerable: true,
+	get: function() {
+		return DialogHeader;
+	}
+});
+Object.defineProperty(exports, "DialogOverlay", {
+	enumerable: true,
+	get: function() {
+		return DialogOverlay;
+	}
+});
+Object.defineProperty(exports, "DialogPortal", {
+	enumerable: true,
+	get: function() {
+		return DialogPortal;
+	}
+});
+Object.defineProperty(exports, "DialogTitle", {
+	enumerable: true,
+	get: function() {
+		return DialogTitle;
+	}
+});
+Object.defineProperty(exports, "DialogTrigger", {
+	enumerable: true,
+	get: function() {
+		return DialogTrigger;
+	}
+});
+Object.defineProperty(exports, "Input", {
+	enumerable: true,
+	get: function() {
+		return Input;
 	}
 });
 Object.defineProperty(exports, "useComboboxAnchor", {

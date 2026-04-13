@@ -12,6 +12,18 @@ export {
 export { Calendar, CalendarDayButton } from './shadcn/ui/calendar';
 export { Checkbox } from './shadcn/ui/checkbox';
 export {
+	Dialog,
+	DialogClose,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogOverlay,
+	DialogPortal,
+	DialogTitle,
+	DialogTrigger,
+} from './shadcn/ui/dialog';
+export {
 	type CarouselApi,
 	Carousel,
 	CarouselContent,
@@ -50,6 +62,7 @@ export {
 	ComboboxValue,
 	useComboboxAnchor,
 } from './shadcn/ui/combobox';
+export { Input } from './shadcn/ui/input';
 // ── Providers ──
 export { AppProviders } from './providers/AppProviders';
 // ── Providers ──
