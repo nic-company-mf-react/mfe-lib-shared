@@ -10,6 +10,29 @@ export {
 	buttonGroupVariants,
 	buttonGroupVariantsConfig,
 } from './components/shadcn/ui/button-group';
+export { Calendar, CalendarDayButton } from './components/shadcn/ui/calendar';
+export { Checkbox } from './components/shadcn/ui/checkbox';
+export {
+	type CarouselApi,
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselPrevious,
+	CarouselNext,
+	useCarousel,
+} from './components/shadcn/ui/carousel';
+export {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectLabel,
+	SelectScrollDownButton,
+	SelectScrollUpButton,
+	SelectSeparator,
+	SelectTrigger,
+	SelectValue,
+} from './components/shadcn/ui/select';
 // ── Providers ──
 export { AppProviders } from './components/providers/AppProviders';
 // ── Providers ──

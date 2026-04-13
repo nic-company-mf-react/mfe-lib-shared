@@ -3,6 +3,10 @@ export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './
 export { Alert, AlertTitle, AlertDescription, AlertAction } from './components/shadcn/ui/alert';
 export { Badge, badgeVariants, badgeVariantsConfig } from './components/shadcn/ui/badge';
 export { ButtonGroup, ButtonGroupText, ButtonGroupSeparator, buttonGroupVariants, buttonGroupVariantsConfig, } from './components/shadcn/ui/button-group';
+export { Calendar, CalendarDayButton } from './components/shadcn/ui/calendar';
+export { Checkbox } from './components/shadcn/ui/checkbox';
+export { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, useCarousel, } from './components/shadcn/ui/carousel';
+export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, } from './components/shadcn/ui/select';
 export { AppProviders } from './components/providers/AppProviders';
 export { default as CodeBlockClient } from './components/code-block/CodeBlockClient';
 export { cn } from './components/shadcn/lib/utils';

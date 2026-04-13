@@ -3,3 +3,8 @@ export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './
 export { Alert, AlertTitle, AlertDescription, AlertAction } from './alert';
 export { Badge, badgeVariants, badgeVariantsConfig } from './badge';
 export { ButtonGroup, ButtonGroupText, ButtonGroupSeparator, buttonGroupVariants, buttonGroupVariantsConfig, } from './button-group';
+export { Calendar, CalendarDayButton } from './calendar';
+export { Checkbox } from './checkbox';
+export { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, useCarousel, } from './carousel';
+export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, } from './select';
+export { Combobox, ComboboxChip, ComboboxChips, ComboboxChipsInput, ComboboxCollection, ComboboxContent, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxLabel, ComboboxList, ComboboxSeparator, ComboboxTrigger, ComboboxValue, useComboboxAnchor, } from './combobox';
