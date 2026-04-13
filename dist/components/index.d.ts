@@ -10,5 +10,6 @@ export { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselPrev
 export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, } from './shadcn/ui/select';
 export { Combobox, ComboboxChip, ComboboxChips, ComboboxChipsInput, ComboboxCollection, ComboboxContent, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxLabel, ComboboxList, ComboboxSeparator, ComboboxTrigger, ComboboxValue, useComboboxAnchor, } from './shadcn/ui/combobox';
 export { Input } from './shadcn/ui/input';
+export { Toaster } from './shadcn/ui/sonner';
 export { AppProviders } from './providers/AppProviders';
 export { default as CodeBlockClient } from './code-block/CodeBlockClient';

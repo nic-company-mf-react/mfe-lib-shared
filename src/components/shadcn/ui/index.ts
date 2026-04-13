@@ -12,6 +12,7 @@ export {
 export { Calendar, CalendarDayButton } from './calendar';
 export { Checkbox } from './checkbox';
 export { Input } from './input';
+export { Toaster } from './sonner';
 export {
 	Dialog,
 	DialogClose,

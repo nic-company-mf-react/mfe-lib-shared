@@ -1,6 +1,9 @@
 import type { Preview } from '@storybook/react-vite';
 // @ts-expect-error
 import '../stories/styles/global.css';
+import React from 'react';
+import { ThemeProvider } from '@nic/mfe-lib-shared/context';
+import { Toaster } from '@nic/mfe-lib-shared/components/ui';
 
 // Storybook 에서 URL 파라미터로 hideDocsToc 플래그 사용하기 위한 로직(BGN) =================================
 function getHideDocsTocFlag(): boolean {
@@ -22,6 +25,10 @@ const hideDocsToc = getHideDocsTocFlag();
 // Storybook 에서 URL 파라미터로 hideDocsToc 플래그 사용하기 위한 로직(END) =================================
 
 const preview: Preview = {
+	decorators: [
+		(Story: React.ComponentType) =>
+			React.createElement(ThemeProvider, null, React.createElement(Story, null), React.createElement(Toaster, null)),
+	],
 	parameters: {
 		actions: { argTypesRegex: '^on[A-Z].*' },
 		controls: {

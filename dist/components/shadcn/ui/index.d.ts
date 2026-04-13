@@ -6,6 +6,7 @@ export { ButtonGroup, ButtonGroupText, ButtonGroupSeparator, buttonGroupVariants
 export { Calendar, CalendarDayButton } from './calendar';
 export { Checkbox } from './checkbox';
 export { Input } from './input';
+export { Toaster } from './sonner';
 export { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger, } from './dialog';
 export { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, useCarousel, } from './carousel';
 export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, } from './select';

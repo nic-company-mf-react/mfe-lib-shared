@@ -63,6 +63,7 @@ export {
 	useComboboxAnchor,
 } from './shadcn/ui/combobox';
 export { Input } from './shadcn/ui/input';
+export { Toaster } from './shadcn/ui/sonner';
 // ── Providers ──
 export { AppProviders } from './providers/AppProviders';
 // ── Providers ──
