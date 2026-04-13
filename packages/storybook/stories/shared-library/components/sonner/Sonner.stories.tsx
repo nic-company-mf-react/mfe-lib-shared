@@ -35,8 +35,8 @@ const meta = {
 ### 임포트
 
 \`\`\`tsx
-import { Toaster } from '@nic/mfe-lib-shared/components/ui';
-import { toast } from 'sonner';
+import { Toaster, toast } from '@nic/mfe-lib-shared/components/ui';
+//import { toast } from 'sonner';
 // 레이아웃 예시
 // import { ThemeProvider } from '@nic/mfe-lib-shared/context';
 \`\`\`
@@ -147,8 +147,8 @@ export const Default: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `import { Toaster } from '@nic/mfe-lib-shared/components/ui';
-import { toast } from 'sonner';
+				code: `import { Toaster, toast } from '@nic/mfe-lib-shared/components/ui';
+//import { toast } from 'sonner';
 
 <Button onClick={() => toast('이벤트가 생성되었습니다.')}>토스트 표시</Button>
 <Toaster />
@@ -167,7 +167,10 @@ export const Types: Story = {
 		controls: { disable: true },
 		docs: {
 			source: {
-				code: `toast.success('저장되었습니다.');
+				code: `import { toast } from '@nic/mfe-lib-shared/components/ui';
+//import { toast } from 'sonner';
+
+toast.success('저장되었습니다.');
 toast.info('참고 사항입니다.');
 toast.warning('확인이 필요합니다.');
 toast.error('요청에 실패했습니다.');`,
@@ -222,7 +225,10 @@ export const WithDescription: Story = {
 		controls: { disable: true },
 		docs: {
 			source: {
-				code: `toast('새 메시지', {
+				code: `import { toast } from '@nic/mfe-lib-shared/components/ui';
+//import { toast } from 'sonner';
+
+toast('새 메시지', {
   description: '1분 전 · Alice',
 });`,
 			},
@@ -261,7 +267,10 @@ export const PromiseToast: Story = {
 		controls: { disable: true },
 		docs: {
 			source: {
-				code: `toast.promise(
+				code: `import { toast } from '@nic/mfe-lib-shared/components/ui';
+//import { toast } from 'sonner';
+
+toast.promise(
   fetch('/api').then((r) => r.json()),
   {
     loading: '불러오는 중…',
@@ -309,7 +318,10 @@ export const InteractiveExample: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `<Toaster
+				code: `import { Toaster } from '@nic/mfe-lib-shared/components/ui';
+//import { toast } from 'sonner';
+
+<Toaster
   position="bottom-right"
   expand={false}
   richColors={false}
@@ -349,7 +361,10 @@ export const WithAction: Story = {
 		controls: { disable: true },
 		docs: {
 			source: {
-				code: `toast('파일이 준비되었습니다.', {
+				code: `import { toast } from '@nic/mfe-lib-shared/components/ui';
+//import { toast } from 'sonner';
+
+toast('파일이 준비되었습니다.', {
   action: {
     label: '열기',
     onClick: () => console.log('열기'),
