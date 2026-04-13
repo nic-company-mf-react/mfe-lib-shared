@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button, Calendar, buttonVariantsConfig } from '@nic/mfe-lib-shared/components/ui';
+import { format } from 'date-fns';
+import { ko } from 'date-fns/locale';
 import type { DateRange } from 'react-day-picker';
+import { Calendar as CalendarIcon } from 'lucide-react';
 import React from 'react';
 import { createPortal } from 'react-dom';
 
@@ -19,6 +22,71 @@ function SingleCalendar(props: React.ComponentProps<typeof Calendar>) {
 			onSelect={setSelected}
 		/>
 	);
+}
+
+const ANCHORED_POPOVER_PANEL_BOX_STYLE: React.CSSProperties = {
+	position: 'fixed',
+	zIndex: 99999,
+	borderRadius: 'var(--radius-md, 0.5rem)',
+	border: '1px solid var(--border)',
+	background: 'var(--popover)',
+	color: 'var(--popover-foreground)',
+	boxShadow: '0 4px 12px color-mix(in oklch, black 12%, transparent)',
+};
+
+/**
+ * Storybook/overflow 이슈를 피하기 위해 `document.body` 포털 + `position: fixed`로 패널을 띄웁니다.
+ * shadcn Date Picker는 [Popover + Calendar](https://ui.shadcn.com/docs/components/base/date-picker) 조합입니다.
+ */
+function useAnchoredPopoverPanel(open: boolean, onRequestClose: () => void) {
+	const triggerWrapRef = React.useRef<HTMLDivElement>(null);
+	const popoverRef = React.useRef<HTMLDivElement>(null);
+	const [panelPos, setPanelPos] = React.useState({ top: 0, left: 0 });
+
+	const updatePanelPosition = React.useCallback(() => {
+		const el = triggerWrapRef.current;
+		if (!el) return;
+		const rect = el.getBoundingClientRect();
+		setPanelPos({ top: rect.bottom + 8, left: rect.left });
+	}, []);
+
+	React.useLayoutEffect(() => {
+		if (!open) return;
+		updatePanelPosition();
+	}, [open, updatePanelPosition]);
+
+	React.useEffect(() => {
+		if (!open) return;
+		window.addEventListener('scroll', updatePanelPosition, true);
+		window.addEventListener('resize', updatePanelPosition);
+		return () => {
+			window.removeEventListener('scroll', updatePanelPosition, true);
+			window.removeEventListener('resize', updatePanelPosition);
+		};
+	}, [open, updatePanelPosition]);
+
+	React.useEffect(() => {
+		if (!open) return;
+		const onDocMouseDown = (e: MouseEvent) => {
+			const t = e.target as Node;
+			if (triggerWrapRef.current?.contains(t)) return;
+			if (popoverRef.current?.contains(t)) return;
+			onRequestClose();
+		};
+		document.addEventListener('mousedown', onDocMouseDown);
+		return () => document.removeEventListener('mousedown', onDocMouseDown);
+	}, [open, onRequestClose]);
+
+	React.useEffect(() => {
+		if (!open) return;
+		const onKeyDown = (e: KeyboardEvent) => {
+			if (e.key === 'Escape') onRequestClose();
+		};
+		document.addEventListener('keydown', onKeyDown);
+		return () => document.removeEventListener('keydown', onKeyDown);
+	}, [open, onRequestClose]);
+
+	return { triggerWrapRef, popoverRef, panelPos };
 }
 
 const meta = {
@@ -51,6 +119,21 @@ const [selected, setSelected] = React.useState<Date | undefined>();
   onSelect={setSelected}
 />
 \`\`\`
+
+---
+
+### Date Picker
+
+[shadcn/ui Date Picker](https://ui.shadcn.com/docs/components/base/date-picker)는 별도 \`DatePicker\` 루트 컴포넌트 없이 **Popover + Calendar**를 조합해 만듭니다.
+
+\`\`\`txt
+Popover
+├── PopoverTrigger
+└── PopoverContent
+    └── Calendar
+\`\`\`
+
+이 패키지에서 Popover를 쓰지 않는 경우, 스토리의 **트리거 버튼 + 포털 패널** 예시가 동일한 UX를 참고용으로 제공합니다.
         `,
 			},
 		},
@@ -221,52 +304,8 @@ React.useLayoutEffect(() => {
 	render: (args) => {
 		const [open, setOpen] = React.useState(false);
 		const [selected, setSelected] = React.useState<Date | undefined>();
-		const [panelPos, setPanelPos] = React.useState({ top: 0, left: 0 });
-		const triggerWrapRef = React.useRef<HTMLDivElement>(null);
-		const popoverRef = React.useRef<HTMLDivElement>(null);
-
-		const updatePanelPosition = React.useCallback(() => {
-			const el = triggerWrapRef.current;
-			if (!el) return;
-			const rect = el.getBoundingClientRect();
-			setPanelPos({ top: rect.bottom + 8, left: rect.left });
-		}, []);
-
-		React.useLayoutEffect(() => {
-			if (!open) return;
-			updatePanelPosition();
-		}, [open, updatePanelPosition]);
-
-		React.useEffect(() => {
-			if (!open) return;
-			window.addEventListener('scroll', updatePanelPosition, true);
-			window.addEventListener('resize', updatePanelPosition);
-			return () => {
-				window.removeEventListener('scroll', updatePanelPosition, true);
-				window.removeEventListener('resize', updatePanelPosition);
-			};
-		}, [open, updatePanelPosition]);
-
-		React.useEffect(() => {
-			if (!open) return;
-			const onDocMouseDown = (e: MouseEvent) => {
-				const t = e.target as Node;
-				if (triggerWrapRef.current?.contains(t)) return;
-				if (popoverRef.current?.contains(t)) return;
-				setOpen(false);
-			};
-			document.addEventListener('mousedown', onDocMouseDown);
-			return () => document.removeEventListener('mousedown', onDocMouseDown);
-		}, [open]);
-
-		React.useEffect(() => {
-			if (!open) return;
-			const onKeyDown = (e: KeyboardEvent) => {
-				if (e.key === 'Escape') setOpen(false);
-			};
-			document.addEventListener('keydown', onKeyDown);
-			return () => document.removeEventListener('keydown', onKeyDown);
-		}, [open]);
+		const close = React.useCallback(() => setOpen(false), []);
+		const { triggerWrapRef, popoverRef, panelPos } = useAnchoredPopoverPanel(open, close);
 
 		const panel = open ? (
 			<div
@@ -275,15 +314,9 @@ React.useLayoutEffect(() => {
 				role="dialog"
 				aria-label="날짜 선택"
 				style={{
-					position: 'fixed',
+					...ANCHORED_POPOVER_PANEL_BOX_STYLE,
 					top: panelPos.top,
 					left: panelPos.left,
-					zIndex: 99999,
-					borderRadius: 'var(--radius-md, 0.5rem)',
-					border: '1px solid var(--border)',
-					background: 'var(--popover)',
-					color: 'var(--popover-foreground)',
-					boxShadow: '0 4px 12px color-mix(in oklch, black 12%, transparent)',
 				}}
 			>
 				<Calendar
@@ -450,4 +483,197 @@ export const AllNavButtonVariants: Story = {
 			))}
 		</div>
 	),
+};
+
+const sectionDividerStyle: React.CSSProperties = {
+	border: 'none',
+	borderTop: '1px solid var(--border, #e5e5e5)',
+	margin: '32px 0 24px',
+};
+
+/**
+ * [Date Picker 문서](https://ui.shadcn.com/docs/components/base/date-picker)와 동일한 조합 개념을 안내합니다.
+ */
+export const DatePickerDocsDivider: Story = {
+	name: 'Date Picker ────────',
+	parameters: {
+		controls: { disable: true },
+		docs: {
+			description: {
+				story:
+					'[shadcn/ui Date Picker](https://ui.shadcn.com/docs/components/base/date-picker): Popover + Calendar 조합. 아래 스토리는 Popover 대신 포털 패널로 같은 패턴을 보여 줍니다.',
+			},
+		},
+	},
+	render: () => (
+		<div style={{ maxWidth: 520, padding: '8px 4px', textAlign: 'left' }}>
+			<hr style={sectionDividerStyle} />
+			<h3 style={{ margin: '0 0 12px', fontSize: '1.05rem', fontWeight: 600 }}>Date Picker</h3>
+			<p style={{ margin: '0 0 12px', fontSize: '14px', lineHeight: 1.55, color: 'var(--muted-foreground, #737373)' }}>
+				shadcn/ui에서는 Popover 트리거 안에 <code style={{ fontSize: '0.9em' }}>Calendar</code>를 넣어 날짜를 고릅니다.
+				자세한 코드는{' '}
+				<a
+					href="https://ui.shadcn.com/docs/components/base/date-picker"
+					target="_blank"
+					rel="noreferrer"
+					style={{ color: 'var(--primary, #171717)', textDecoration: 'underline' }}
+				>
+					Date Picker 공식 문서
+				</a>
+				를 참고하세요.
+			</p>
+			<hr style={{ ...sectionDividerStyle, margin: '0' }} />
+		</div>
+	),
+};
+
+/**
+ * 공식 문서의 기본 Date Picker에 가깝게: 아이콘 + `date-fns` 포맷, 빈 값일 때 플레이스홀더 스타일.
+ */
+export const DatePickerBasic: Story = {
+	name: 'Date Picker — 단일',
+	parameters: {
+		controls: { disable: true },
+		docs: {
+			description: {
+				story:
+					'[기본 예시](https://ui.shadcn.com/docs/components/base/date-picker)와 같이 트리거에 선택된 날짜를 표시하고, 패널 안에 `mode="single"` Calendar를 둡니다.',
+			},
+		},
+	},
+	render: (args) => {
+		const [open, setOpen] = React.useState(false);
+		const [date, setDate] = React.useState<Date | undefined>();
+		const close = React.useCallback(() => setOpen(false), []);
+		const { triggerWrapRef, popoverRef, panelPos } = useAnchoredPopoverPanel(open, close);
+		const empty = !date;
+
+		const panel = open ? (
+			<div
+				ref={popoverRef}
+				data-slot="popover-content"
+				className="w-auto p-0"
+				role="dialog"
+				aria-label="날짜 선택"
+				style={{
+					...ANCHORED_POPOVER_PANEL_BOX_STYLE,
+					top: panelPos.top,
+					left: panelPos.left,
+					padding: 0,
+					width: 'auto',
+				}}
+			>
+				<Calendar
+					{...args}
+					mode="single"
+					selected={date}
+					onSelect={(d) => {
+						setDate(d);
+						setOpen(false);
+					}}
+				/>
+			</div>
+		) : null;
+
+		return (
+			<div
+				ref={triggerWrapRef}
+				style={{ display: 'inline-block' }}
+			>
+				<Button
+					type="button"
+					variant="outline"
+					data-empty={empty ? 'true' : undefined}
+					className="justify-start gap-2 text-left font-normal data-empty:text-muted-foreground"
+					onClick={() => setOpen((o) => !o)}
+					aria-expanded={open}
+					aria-haspopup="dialog"
+				>
+					<CalendarIcon
+						className="size-4 shrink-0 opacity-70"
+						aria-hidden
+					/>
+					{date ? format(date, 'PPP', { locale: ko }) : <span>날짜 선택</span>}
+				</Button>
+				{panel && typeof document !== 'undefined' ? createPortal(panel, document.body) : null}
+			</div>
+		);
+	},
+};
+
+/**
+ * 공식 문서의 Range Picker 예시와 같은 역할: 기간 선택 후 시작·종료가 모두 있으면 패널을 닫습니다.
+ */
+export const DatePickerRange: Story = {
+	name: 'Date Picker — 기간',
+	parameters: {
+		controls: { disable: true },
+		docs: {
+			description: {
+				story:
+					'[Range Picker](https://ui.shadcn.com/docs/components/base/date-picker)처럼 `mode="range"`와 `DateRange` 상태를 사용합니다.',
+			},
+		},
+	},
+	render: (args) => {
+		const [open, setOpen] = React.useState(false);
+		const [range, setRange] = React.useState<DateRange | undefined>();
+		const close = React.useCallback(() => setOpen(false), []);
+		const { triggerWrapRef, popoverRef, panelPos } = useAnchoredPopoverPanel(open, close);
+		const label =
+			range?.from && range?.to
+				? `${format(range.from, 'PPP', { locale: ko })} — ${format(range.to, 'PPP', { locale: ko })}`
+				: null;
+
+		const panel = open ? (
+			<div
+				ref={popoverRef}
+				data-slot="popover-content"
+				className="w-auto p-0"
+				role="dialog"
+				aria-label="기간 선택"
+				style={{
+					...ANCHORED_POPOVER_PANEL_BOX_STYLE,
+					top: panelPos.top,
+					left: panelPos.left,
+					padding: 0,
+					width: 'auto',
+				}}
+			>
+				<Calendar
+					{...args}
+					mode="range"
+					selected={range}
+					onSelect={(r) => {
+						setRange(r);
+						if (r?.from && r?.to) setOpen(false);
+					}}
+				/>
+			</div>
+		) : null;
+
+		return (
+			<div
+				ref={triggerWrapRef}
+				style={{ display: 'inline-block' }}
+			>
+				<Button
+					type="button"
+					variant="outline"
+					data-empty={!label ? 'true' : undefined}
+					className="justify-start gap-2 text-left font-normal data-empty:text-muted-foreground"
+					onClick={() => setOpen((o) => !o)}
+					aria-expanded={open}
+					aria-haspopup="dialog"
+				>
+					<CalendarIcon
+						className="size-4 shrink-0 opacity-70"
+						aria-hidden
+					/>
+					{label ?? <span>기간 선택</span>}
+				</Button>
+				{panel && typeof document !== 'undefined' ? createPortal(panel, document.body) : null}
+			</div>
+		);
+	},
 };
