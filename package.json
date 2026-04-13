@@ -8,9 +8,9 @@
 	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
+			"types": "./dist/index.d.ts",
 			"import": "./dist/index.js",
-			"require": "./dist/index.cjs",
-			"types": "./dist/index.d.ts"
+			"require": "./dist/index.cjs"
 		},
 		"./config/eslint": {
 			"types": "./dist/config/eslint/index.d.ts",
@@ -39,49 +39,49 @@
 		"./styles/layout": "./dist/styles/src/styles/layout/layout.css",
 		"./styles/components": "./dist/styles/components.css",
 		"./components": {
+			"types": "./dist/components/index.d.ts",
 			"import": "./dist/components/index.js",
-			"require": "./dist/components/index.cjs",
-			"types": "./dist/components/index.d.ts"
+			"require": "./dist/components/index.cjs"
 		},
 		"./components/ui": {
+			"types": "./dist/components/ui/index.d.ts",
 			"import": "./dist/components/ui/index.js",
-			"require": "./dist/components/ui/index.cjs",
-			"types": "./dist/components/ui/index.d.ts"
+			"require": "./dist/components/ui/index.cjs"
 		},
 		"./types": {
+			"types": "./dist/types/index.d.ts",
 			"import": "./dist/types/index.js",
-			"require": "./dist/types/index.cjs",
-			"types": "./dist/types/index.d.ts"
+			"require": "./dist/types/index.cjs"
 		},
 		"./context": {
+			"types": "./dist/context/index.d.ts",
 			"import": "./dist/context/index.js",
-			"require": "./dist/context/index.cjs",
-			"types": "./dist/context/index.d.ts"
+			"require": "./dist/context/index.cjs"
 		},
 		"./utils": {
+			"types": "./dist/utils/index.d.ts",
 			"import": "./dist/utils/index.js",
-			"require": "./dist/utils/index.cjs",
-			"types": "./dist/utils/index.d.ts"
+			"require": "./dist/utils/index.cjs"
 		},
 		"./hooks": {
+			"types": "./dist/hooks/index.d.ts",
 			"import": "./dist/hooks/index.js",
-			"require": "./dist/hooks/index.cjs",
-			"types": "./dist/hooks/index.d.ts"
+			"require": "./dist/hooks/index.cjs"
 		},
 		"./api": {
+			"types": "./dist/api/index.d.ts",
 			"import": "./dist/api/index.js",
-			"require": "./dist/api/index.cjs",
-			"types": "./dist/api/index.d.ts"
+			"require": "./dist/api/index.cjs"
 		},
 		"./query": {
+			"types": "./dist/query/index.d.ts",
 			"import": "./dist/query/index.js",
-			"require": "./dist/query/index.cjs",
-			"types": "./dist/query/index.d.ts"
+			"require": "./dist/query/index.cjs"
 		},
 		"./i18n": {
+			"types": "./dist/i18n/index.d.ts",
 			"import": "./dist/i18n/index.js",
-			"require": "./dist/i18n/index.cjs",
-			"types": "./dist/i18n/index.d.ts"
+			"require": "./dist/i18n/index.cjs"
 		}
 	},
 	"files": [

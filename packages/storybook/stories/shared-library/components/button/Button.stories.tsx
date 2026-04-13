@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 import { Button, buttonVariantsConfig } from '@nic/mfe-lib-shared/components/ui';
 import React from 'react';
@@ -62,6 +62,35 @@ Button 컴포넌트를 화면에 표시하기 위한 기본 사용법입니다.
 			description: '비활성화 상태',
 			table: {
 				defaultValue: { summary: 'false' },
+			},
+		},
+		focusableWhenDisabled: {
+			control: 'boolean',
+			description: '비활성화 상태에서 포커스 가능 여부',
+			table: {
+				defaultValue: { summary: 'false' },
+			},
+		},
+		className: {
+			control: 'text',
+			description: '버튼의 클래스 이름',
+			table: {
+				defaultValue: { summary: '' },
+			},
+		},
+		style: {
+			control: 'object',
+			description: '버튼의 스타일',
+			table: {
+				defaultValue: { summary: '{}' },
+			},
+		},
+		render: {
+			control: 'text',
+			description:
+				'버튼의 렌더링 함수.<br />이 기능을 사용하면 Button 컴포넌트의 HTML 요소를 다른 태그로 바꾸거나 다른 컴포너트와 결합하거나 추가적인 작업을 할 수 있습니다.',
+			table: {
+				defaultValue: { summary: '() => {}' },
 			},
 		},
 		onClick: {

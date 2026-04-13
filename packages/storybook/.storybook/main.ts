@@ -1,8 +1,12 @@
+// This file has been automatically migrated to valid ESM format by Storybook.
+import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from '@storybook/react-vite';
 import { mergeConfig } from 'vite';
-import path from 'path';
+import path, { dirname } from 'path';
 import remarkGfm from 'remark-gfm';
 import tailwindcss from '@tailwindcss/vite';
+
+const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = import.meta.dirname;
 
@@ -11,7 +15,7 @@ const config: StorybookConfig = {
 	stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 	addons: [
 		{
-			name: '@storybook/addon-docs',
+			name: getAbsolutePath("@storybook/addon-docs"),
 			options: {
 				mdxPluginOptions: {
 					mdxCompileOptions: {
@@ -20,10 +24,10 @@ const config: StorybookConfig = {
 				},
 			},
 		},
-		'@storybook/addon-a11y',
+		getAbsolutePath("@storybook/addon-a11y"),
 	],
 	framework: {
-		name: '@storybook/react-vite',
+		name: getAbsolutePath("@storybook/react-vite"),
 		options: {},
 	},
 	// storybook 10.3.3 버전에서 삭제되었습니다. 각 stories.tsx 파일에서 tags: ['autodocs'] 주석처리 해야함
@@ -95,3 +99,7 @@ const config: StorybookConfig = {
 };
 
 export default config;
+
+function getAbsolutePath(value: string): any {
+    return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+}

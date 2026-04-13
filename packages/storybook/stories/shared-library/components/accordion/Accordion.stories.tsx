@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@nic/mfe-lib-shared/components/ui';
 import React from 'react';
 
@@ -80,7 +80,7 @@ export const Single: Story = {
 		const { defaultValue: dv, ...rest } = args;
 		const open =
 			typeof dv === 'string'
-				? dv
+				? String(dv)
 						.split(',')
 						.map((s) => s.trim())
 						.filter(Boolean)
