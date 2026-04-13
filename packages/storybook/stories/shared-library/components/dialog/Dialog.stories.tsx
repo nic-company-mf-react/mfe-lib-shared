@@ -131,17 +131,17 @@ export const Default: Story = {
 		defaultOpen: false,
 	},
 	render: (args) => (
-			<Dialog {...args}>
-				<DialogTrigger render={<Button variant="default" />}>대화상자 열기</DialogTrigger>
-				<DialogContent>
-					<DialogHeader>
-						<DialogTitle>정말 진행하시겠습니까?</DialogTitle>
-						<DialogDescription>
-							이 작업은 되돌릴 수 없습니다. 계정이 영구 삭제되고 서버에서 데이터가 제거됩니다.
-						</DialogDescription>
-					</DialogHeader>
-				</DialogContent>
-			</Dialog>
+		<Dialog {...args}>
+			<DialogTrigger render={<Button variant="default" />}>대화상자 열기</DialogTrigger>
+			<DialogContent>
+				<DialogHeader>
+					<DialogTitle>정말 진행하시겠습니까?</DialogTitle>
+					<DialogDescription>
+						이 작업은 되돌릴 수 없습니다. 계정이 영구 삭제되고 서버에서 데이터가 제거됩니다.
+					</DialogDescription>
+				</DialogHeader>
+			</DialogContent>
+		</Dialog>
 	),
 };
 
@@ -385,7 +385,16 @@ export const CustomCloseButton: Story = {
 						<DialogTitle>공유</DialogTitle>
 						<DialogDescription>링크를 복사하거나 우측 버튼으로 닫을 수 있습니다.</DialogDescription>
 					</div>
-					<DialogClose render={<Button variant="ghost" size="icon-sm" />}>✕</DialogClose>
+					<DialogClose
+						render={
+							<Button
+								variant="ghost"
+								size="icon-sm"
+							/>
+						}
+					>
+						✕
+					</DialogClose>
 				</DialogHeader>
 			</DialogContent>
 		</Dialog>
@@ -436,8 +445,7 @@ export const StickyFooter: Story = {
 							key={i}
 							className="mb-3"
 						>
-							{i + 1}. 서비스 이용과 관련된 안내 문단입니다. 스크롤하면 헤더는 유지되고 이 영역만
-							움직입니다.
+							{i + 1}. 서비스 이용과 관련된 안내 문단입니다. 스크롤하면 헤더는 유지되고 이 영역만 움직입니다.
 						</p>
 					))}
 				</div>
@@ -480,7 +488,12 @@ export const ScrollableContent: Story = {
  * `open` / `onOpenChange` 로 열림 상태를 제어합니다.
  */
 export const Controlled: Story = {
+	args: {
+		defaultOpen: true,
+	},
+
 	name: '제어 모드',
+
 	parameters: {
 		docs: {
 			source: {
@@ -507,6 +520,7 @@ const [open, setOpen] = React.useState(false);
 			},
 		},
 	},
+
 	render: () => {
 		const [open, setOpen] = React.useState(false);
 		return (
