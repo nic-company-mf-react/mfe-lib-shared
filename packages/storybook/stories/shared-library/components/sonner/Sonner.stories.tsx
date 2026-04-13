@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button, Toaster } from '@nic/mfe-lib-shared/components/ui';
+import { Button, Toaster, toast } from '@nic/mfe-lib-shared/components/ui';
 import { ThemeProvider } from '@nic/mfe-lib-shared/context';
-import React from 'react';
-import { toast } from 'sonner';
 
 const positionOptions = [
 	'top-left',
@@ -18,9 +16,9 @@ const meta = {
 	component: Toaster,
 	decorators: [
 		(Story) => (
-			<ThemeProvider>
+			<>
 				<Story />
-			</ThemeProvider>
+			</>
 		),
 	],
 	parameters: {
@@ -141,7 +139,6 @@ export const Default: Story = {
 			>
 				토스트 표시
 			</Button>
-			<Toaster {...args} />
 		</div>
 	),
 	parameters: {
@@ -211,7 +208,6 @@ toast.error('요청에 실패했습니다.');`,
 			>
 				Error
 			</Button>
-			<Toaster {...args} />
 		</div>
 	),
 };
@@ -253,7 +249,6 @@ toast('새 메시지', {
 			>
 				설명 있는 토스트
 			</Button>
-			<Toaster {...args} />
 		</div>
 	),
 };
@@ -305,7 +300,6 @@ toast.promise(
 			>
 				Promise 토스트
 			</Button>
-			<Toaster {...args} />
 		</div>
 	),
 };
@@ -347,7 +341,6 @@ export const InteractiveExample: Story = {
 			>
 				토스트 표시
 			</Button>
-			<Toaster {...args} />
 		</div>
 	),
 };
@@ -398,7 +391,6 @@ toast('파일이 준비되었습니다.', {
 			>
 				액션 토스트
 			</Button>
-			<Toaster {...args} />
 		</div>
 	),
 };

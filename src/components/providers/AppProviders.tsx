@@ -3,6 +3,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from '../../context';
 import { I18nProvider } from '../../i18n/I18nProvider';
 import type { i18n as I18nInstance } from 'i18next';
+import { Toaster } from '../../components/shadcn/ui';
 
 // Tanstack Query관련 imports ----------------------------
 import { QueryClientProvider, type QueryClientConfig } from '@tanstack/react-query';
@@ -43,6 +44,7 @@ export function AppProviders({ children, queryConfig, i18nInstance }: AppProvide
 					</QueryClientProvider>
 				</HelmetProvider>
 			</I18nProvider>
+			<Toaster />
 		</ThemeProvider>
 	);
 
