@@ -1,6 +1,6 @@
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 require("./chunks/chunk-C6SnN1q4.cjs");
-const require_button_group = require("./chunks/button-group-C5dEarVP.cjs");
+const require_button_group = require("./chunks/button-group-DjQvtXR9.cjs");
 const require_context = require("./chunks/context-DF0kIuyF.cjs");
 const require_I18nProvider = require("./chunks/I18nProvider-DQwVP4kQ.cjs");
 const require_CodeBlockClient = require("./chunks/CodeBlockClient-CDGPMomJ.cjs");
@@ -32,6 +32,8 @@ exports.I18nProvider = require_I18nProvider.I18nProvider;
 exports.ThemeProvider = require_context.ThemeProvider;
 exports.badgeVariants = require_button_group.badgeVariants;
 exports.badgeVariantsConfig = require_button_group.badgeVariantsConfig;
+exports.buttonGroupVariants = require_button_group.buttonGroupVariants;
+exports.buttonGroupVariantsConfig = require_button_group.buttonGroupVariantsConfig;
 exports.buttonVariants = require_button_group.buttonVariants;
 exports.callApi = require_api.callApi;
 exports.cn = require_button_group.cn;

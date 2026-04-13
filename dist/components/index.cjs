@@ -1,5 +1,5 @@
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
-const require_button_group = require("../chunks/button-group-C5dEarVP.cjs");
+const require_button_group = require("../chunks/button-group-DjQvtXR9.cjs");
 const require_CodeBlockClient = require("../chunks/CodeBlockClient-CDGPMomJ.cjs");
 exports.Accordion = require_button_group.Accordion;
 exports.AccordionContent = require_button_group.AccordionContent;
@@ -18,4 +18,6 @@ exports.ButtonGroupText = require_button_group.ButtonGroupText;
 exports.CodeBlockClient = require_CodeBlockClient.CodeBlockClient;
 exports.badgeVariants = require_button_group.badgeVariants;
 exports.badgeVariantsConfig = require_button_group.badgeVariantsConfig;
+exports.buttonGroupVariants = require_button_group.buttonGroupVariants;
+exports.buttonGroupVariantsConfig = require_button_group.buttonGroupVariantsConfig;
 exports.buttonVariants = require_button_group.buttonVariants;

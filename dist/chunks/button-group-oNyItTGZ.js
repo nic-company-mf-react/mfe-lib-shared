@@ -4554,11 +4554,12 @@ function Separator({ className, orientation = "horizontal", ...props }) {
 }
 //#endregion
 //#region src/components/shadcn/ui/button-group.tsx
+var buttonGroupVariantsConfig = { orientation: {
+	horizontal: "*:data-slot:rounded-r-none [&>[data-slot]:not(:has(~[data-slot]))]:rounded-r-lg! [&>[data-slot]~[data-slot]]:rounded-l-none [&>[data-slot]~[data-slot]]:border-l-0",
+	vertical: "flex-col *:data-slot:rounded-b-none [&>[data-slot]:not(:has(~[data-slot]))]:rounded-b-lg! [&>[data-slot]~[data-slot]]:rounded-t-none [&>[data-slot]~[data-slot]]:border-t-0"
+} };
 var buttonGroupVariants = cva("flex w-fit items-stretch *:focus-visible:relative *:focus-visible:z-10 has-[>[data-slot=button-group]]:gap-2 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-lg [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1", {
-	variants: { orientation: {
-		horizontal: "*:data-slot:rounded-r-none [&>[data-slot]:not(:has(~[data-slot]))]:rounded-r-lg! [&>[data-slot]~[data-slot]]:rounded-l-none [&>[data-slot]~[data-slot]]:border-l-0",
-		vertical: "flex-col *:data-slot:rounded-b-none [&>[data-slot]:not(:has(~[data-slot]))]:rounded-b-lg! [&>[data-slot]~[data-slot]]:rounded-t-none [&>[data-slot]~[data-slot]]:border-t-0"
-	} },
+	variants: buttonGroupVariantsConfig,
 	defaultVariants: { orientation: "horizontal" }
 });
 function ButtonGroup({ className, orientation, ...props }) {
@@ -4587,4 +4588,4 @@ function ButtonGroupSeparator({ className, orientation = "vertical", ...props })
 	});
 }
 //#endregion
-export { buttonVariantsConfig as _, badgeVariants as a, AlertAction as c, Accordion as d, AccordionContent as f, buttonVariants as g, Button as h, Badge as i, AlertDescription as l, AccordionTrigger as m, ButtonGroupSeparator as n, badgeVariantsConfig as o, AccordionItem as p, ButtonGroupText as r, Alert as s, ButtonGroup as t, AlertTitle as u, cn as v };
+export { Button as _, buttonGroupVariantsConfig as a, cn as b, badgeVariantsConfig as c, AlertDescription as d, AlertTitle as f, AccordionTrigger as g, AccordionItem as h, buttonGroupVariants as i, Alert as l, AccordionContent as m, ButtonGroupSeparator as n, Badge as o, Accordion as p, ButtonGroupText as r, badgeVariants as s, ButtonGroup as t, AlertAction as u, buttonVariants as v, buttonVariantsConfig as y };
