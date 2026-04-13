@@ -4523,4 +4523,68 @@ function Badge({ className, variant = "default", render, ...props }) {
 	});
 }
 //#endregion
-export { AlertAction as a, Accordion as c, AccordionTrigger as d, Button as f, cn as h, Alert as i, AccordionContent as l, buttonVariantsConfig as m, badgeVariants as n, AlertDescription as o, buttonVariants as p, badgeVariantsConfig as r, AlertTitle as s, Badge as t, AccordionItem as u };
+//#region node_modules/@base-ui/react/esm/separator/Separator.js
+/**
+* A separator element accessible to screen readers.
+* Renders a `<div>` element.
+*
+* Documentation: [Base UI Separator](https://base-ui.com/react/components/separator)
+*/
+var Separator$1 = /* @__PURE__ */ React.forwardRef(function SeparatorComponent(componentProps, forwardedRef) {
+	const { className, render, orientation = "horizontal", ...elementProps } = componentProps;
+	return useRenderElement("div", componentProps, {
+		state: { orientation },
+		ref: forwardedRef,
+		props: [{
+			role: "separator",
+			"aria-orientation": orientation
+		}, elementProps]
+	});
+});
+if (process.env.NODE_ENV !== "production") Separator$1.displayName = "Separator";
+//#endregion
+//#region src/components/shadcn/ui/separator.tsx
+function Separator({ className, orientation = "horizontal", ...props }) {
+	return /* @__PURE__ */ jsx(Separator$1, {
+		"data-slot": "separator",
+		orientation,
+		className: cn("shrink-0 bg-border data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:self-stretch", className),
+		...props
+	});
+}
+//#endregion
+//#region src/components/shadcn/ui/button-group.tsx
+var buttonGroupVariants = cva("flex w-fit items-stretch *:focus-visible:relative *:focus-visible:z-10 has-[>[data-slot=button-group]]:gap-2 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-lg [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1", {
+	variants: { orientation: {
+		horizontal: "*:data-slot:rounded-r-none [&>[data-slot]:not(:has(~[data-slot]))]:rounded-r-lg! [&>[data-slot]~[data-slot]]:rounded-l-none [&>[data-slot]~[data-slot]]:border-l-0",
+		vertical: "flex-col *:data-slot:rounded-b-none [&>[data-slot]:not(:has(~[data-slot]))]:rounded-b-lg! [&>[data-slot]~[data-slot]]:rounded-t-none [&>[data-slot]~[data-slot]]:border-t-0"
+	} },
+	defaultVariants: { orientation: "horizontal" }
+});
+function ButtonGroup({ className, orientation, ...props }) {
+	return /* @__PURE__ */ jsx("div", {
+		role: "group",
+		"data-slot": "button-group",
+		"data-orientation": orientation,
+		className: cn(buttonGroupVariants({ orientation }), className),
+		...props
+	});
+}
+function ButtonGroupText({ className, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		props: mergeProps({ className: cn("flex items-center gap-2 rounded-lg border bg-muted px-2.5 text-sm font-medium [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4", className) }, props),
+		render,
+		state: { slot: "button-group-text" }
+	});
+}
+function ButtonGroupSeparator({ className, orientation = "vertical", ...props }) {
+	return /* @__PURE__ */ jsx(Separator, {
+		"data-slot": "button-group-separator",
+		orientation,
+		className: cn("relative self-stretch bg-input data-horizontal:mx-px data-horizontal:w-auto data-vertical:my-px data-vertical:h-auto", className),
+		...props
+	});
+}
+//#endregion
+export { buttonVariantsConfig as _, badgeVariants as a, AlertAction as c, Accordion as d, AccordionContent as f, buttonVariants as g, Button as h, Badge as i, AlertDescription as l, AccordionTrigger as m, ButtonGroupSeparator as n, badgeVariantsConfig as o, AccordionItem as p, ButtonGroupText as r, Alert as s, ButtonGroup as t, AlertTitle as u, cn as v };
