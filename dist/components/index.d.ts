@@ -11,5 +11,6 @@ export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScro
 export { Combobox, ComboboxChip, ComboboxChips, ComboboxChipsInput, ComboboxCollection, ComboboxContent, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxLabel, ComboboxList, ComboboxSeparator, ComboboxTrigger, ComboboxValue, useComboboxAnchor, } from './shadcn/ui/combobox';
 export { Input } from './shadcn/ui/input';
 export { Toaster } from './shadcn/ui/sonner';
+export { toast } from 'sonner';
 export { AppProviders } from './providers/AppProviders';
 export { default as CodeBlockClient } from './code-block/CodeBlockClient';

@@ -1,6 +1,6 @@
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const require_select = require("../../chunks/select-DibxGfva.cjs");
-const require_sonner = require("../../chunks/sonner-CCuxEXsS.cjs");
+const require_sonner = require("../../chunks/sonner-QYmBhty6.cjs");
 exports.Accordion = require_select.Accordion;
 exports.AccordionContent = require_select.AccordionContent;
 exports.AccordionItem = require_select.AccordionItem;
@@ -65,5 +65,6 @@ exports.buttonGroupVariants = require_select.buttonGroupVariants;
 exports.buttonGroupVariantsConfig = require_select.buttonGroupVariantsConfig;
 exports.buttonVariants = require_select.buttonVariants;
 exports.buttonVariantsConfig = require_select.buttonVariantsConfig;
+exports.toast = require_sonner.toast;
 exports.useCarousel = require_select.useCarousel;
 exports.useComboboxAnchor = require_sonner.useComboboxAnchor;

@@ -64,6 +64,7 @@ export {
 } from './shadcn/ui/combobox';
 export { Input } from './shadcn/ui/input';
 export { Toaster } from './shadcn/ui/sonner';
+export { toast } from 'sonner';
 // ── Providers ──
 export { AppProviders } from './providers/AppProviders';
 // ── Providers ──
