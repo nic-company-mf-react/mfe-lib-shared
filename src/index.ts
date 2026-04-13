@@ -1,6 +1,8 @@
 // ── Shadcn 컴포넌트 ──
 export { Button, buttonVariants } from './components/shadcn/ui/button';
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './components/shadcn/ui/accordion';
+export { Alert, AlertTitle, AlertDescription, AlertAction } from './components/shadcn/ui/alert';
+export { Badge, badgeVariants, badgeVariantsConfig } from './components/shadcn/ui/badge';
 // ── Providers ──
 export { AppProviders } from './components/providers/AppProviders';
 // ── Providers ──

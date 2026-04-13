@@ -1,9 +1,7 @@
-const require_chunk = require("./chunk-C6SnN1q4.cjs");
-let react = require("react");
-react = require_chunk.__toESM(react);
-let react_jsx_runtime = require("react/jsx-runtime");
-let react_dom = require("react-dom");
-react_dom = require_chunk.__toESM(react_dom);
+import * as React from "react";
+import { createElement, forwardRef } from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import * as ReactDOM from "react-dom";
 //#region node_modules/@floating-ui/utils/dist/floating-ui.utils.dom.mjs
 function hasWindow() {
 	return typeof window !== "undefined";
@@ -27,14 +25,14 @@ var UNINITIALIZED = {};
 *   const ref = useRefWithInit(sortColumns, columns)
 */
 function useRefWithInit(init, initArg) {
-	const ref = react.useRef(UNINITIALIZED);
+	const ref = React.useRef(UNINITIALIZED);
 	if (ref.current === UNINITIALIZED) ref.current = init(initArg);
 	return ref;
 }
 //#endregion
 //#region node_modules/@base-ui/utils/esm/useStableCallback.js
-var useInsertionEffect = react[`useInsertionEffect${Math.random().toFixed(1)}`.slice(0, -3)];
-var useSafeInsertionEffect = useInsertionEffect && useInsertionEffect !== react.useLayoutEffect ? useInsertionEffect : (fn) => fn();
+var useInsertionEffect = React[`useInsertionEffect${Math.random().toFixed(1)}`.slice(0, -3)];
+var useSafeInsertionEffect = useInsertionEffect && useInsertionEffect !== React.useLayoutEffect ? useInsertionEffect : (fn) => fn();
 /**
 * Stabilizes the function passed so it's always the same between renders.
 *
@@ -80,11 +78,11 @@ function error(...messages) {
 }
 //#endregion
 //#region node_modules/@base-ui/utils/esm/safeReact.js
-var SafeReact = { ...react };
+var SafeReact = { ...React };
 //#endregion
 //#region node_modules/@base-ui/utils/esm/useIsoLayoutEffect.js
 var noop = () => {};
-var useIsoLayoutEffect = typeof document !== "undefined" ? react.useLayoutEffect : noop;
+var useIsoLayoutEffect = typeof document !== "undefined" ? React.useLayoutEffect : noop;
 //#endregion
 //#region node_modules/@base-ui/utils/esm/mergeObjects.js
 function mergeObjects(a, b) {
@@ -252,10 +250,10 @@ function createFormatErrorMessage(baseUrl, prefix) {
 var formatErrorMessage = createFormatErrorMessage("https://base-ui.com/production-error", "Base UI");
 //#endregion
 //#region node_modules/@base-ui/react/esm/composite/root/CompositeRootContext.js
-var CompositeRootContext = /* @__PURE__ */ react.createContext(void 0);
+var CompositeRootContext = /* @__PURE__ */ React.createContext(void 0);
 if (process.env.NODE_ENV !== "production") CompositeRootContext.displayName = "CompositeRootContext";
 function useCompositeRootContext(optional = false) {
-	const context = react.useContext(CompositeRootContext);
+	const context = React.useContext(CompositeRootContext);
 	if (context === void 0 && !optional) throw new Error(process.env.NODE_ENV !== "production" ? "Base UI: CompositeRootContext is missing. Composite parts must be placed within <Composite.Root>." : formatErrorMessage(16));
 	return context;
 }
@@ -265,7 +263,7 @@ function useFocusableWhenDisabled(parameters) {
 	const { focusableWhenDisabled, disabled, composite = false, tabIndex: tabIndexProp = 0, isNativeButton } = parameters;
 	const isFocusableComposite = composite && focusableWhenDisabled !== false;
 	const isNonFocusableComposite = composite && focusableWhenDisabled === false;
-	return { props: react.useMemo(() => {
+	return { props: React.useMemo(() => {
 		const additionalProps = { onKeyDown(event) {
 			if (disabled && focusableWhenDisabled && event.key !== "Tab") event.preventDefault();
 		} };
@@ -290,7 +288,7 @@ function useFocusableWhenDisabled(parameters) {
 //#region node_modules/@base-ui/react/esm/use-button/useButton.js
 function useButton(parameters = {}) {
 	const { disabled = false, focusableWhenDisabled, tabIndex = 0, native: isNativeButton = true, composite: compositeProp } = parameters;
-	const elementRef = react.useRef(null);
+	const elementRef = React.useRef(null);
 	const compositeRootContext = useCompositeRootContext(true);
 	const isCompositeItem = compositeProp ?? compositeRootContext !== void 0;
 	const { props: focusableWhenDisabledProps } = useFocusableWhenDisabled({
@@ -300,14 +298,14 @@ function useButton(parameters = {}) {
 		tabIndex,
 		isNativeButton
 	});
-	if (process.env.NODE_ENV !== "production") react.useEffect(() => {
+	if (process.env.NODE_ENV !== "production") React.useEffect(() => {
 		if (!elementRef.current) return;
 		const isButtonTag = isButtonElement(elementRef.current);
 		if (isNativeButton) {
 			if (!isButtonTag) error(`A component that acts as a button expected a native <button> because the \`nativeButton\` prop is true. Rendering a non-<button> removes native button semantics, which can impact forms and accessibility. Use a real <button> in the \`render\` prop, or set \`nativeButton\` to \`false\`.${SafeReact.captureOwnerStack?.() || ""}`);
 		} else if (isButtonTag) error(`A component that acts as a button expected a non-<button> because the \`nativeButton\` prop is false. Rendering a <button> keeps native behavior while Base UI applies non-native attributes and handlers, which can add unintended extra attributes (such as \`role\` or \`aria-disabled\`). Use a non-<button> in the \`render\` prop, or set \`nativeButton\` to \`true\`.${SafeReact.captureOwnerStack?.() || ""}`);
 	}, [isNativeButton]);
-	const updateDisabled = react.useCallback(() => {
+	const updateDisabled = React.useCallback(() => {
 		const element = elementRef.current;
 		if (!isButtonElement(element)) return;
 		if (isCompositeItem && disabled && focusableWhenDisabledProps.disabled === void 0 && element.disabled) element.disabled = false;
@@ -318,7 +316,7 @@ function useButton(parameters = {}) {
 	]);
 	useIsoLayoutEffect(updateDisabled, [updateDisabled]);
 	return {
-		getButtonProps: react.useCallback((externalProps = {}) => {
+		getButtonProps: React.useCallback((externalProps = {}) => {
 			const { onClick: externalOnClick, onMouseDown: externalOnMouseDown, onKeyUp: externalOnKeyUp, onKeyDown: externalOnKeyDown, onPointerDown: externalOnPointerDown, ...otherExternalProps } = externalProps;
 			return mergeProps({
 				type: isNativeButton ? "button" : void 0,
@@ -493,7 +491,7 @@ function update(forkRef, refs) {
 }
 //#endregion
 //#region node_modules/@base-ui/utils/esm/reactVersion.js
-var majorVersion = parseInt(react.version, 10);
+var majorVersion = parseInt(React.version, 10);
 function isReactVersionAtLeast(reactVersionToCheck) {
 	return majorVersion >= reactVersionToCheck;
 }
@@ -503,7 +501,7 @@ function isReactVersionAtLeast(reactVersionToCheck) {
 * Extracts the `ref` from a React element, handling different React versions.
 */
 function getReactElementRef(element) {
-	if (!/* @__PURE__ */ react.isValidElement(element)) return null;
+	if (!/* @__PURE__ */ React.isValidElement(element)) return null;
 	const reactElement = element;
 	const propsWithRef = reactElement.props;
 	return (isReactVersionAtLeast(19) ? propsWithRef?.ref : reactElement.ref) ?? null;
@@ -610,15 +608,15 @@ function evaluateRenderProp(element, render, props, state) {
 		const mergedProps = mergeProps(props, render.props);
 		mergedProps.ref = props.ref;
 		let newElement = render;
-		if (newElement?.$$typeof === REACT_LAZY_TYPE) newElement = react.Children.toArray(render)[0];
+		if (newElement?.$$typeof === REACT_LAZY_TYPE) newElement = React.Children.toArray(render)[0];
 		if (process.env.NODE_ENV !== "production") {
-			if (!/* @__PURE__ */ react.isValidElement(newElement)) throw new Error([
+			if (!/* @__PURE__ */ React.isValidElement(newElement)) throw new Error([
 				"Base UI: The `render` prop was provided an invalid React element as `React.isValidElement(render)` is `false`.",
 				"A valid React element must be provided to the `render` prop because it is cloned with props to replace the default element.",
 				"https://base-ui.com/r/invalid-render-prop"
 			].join("\n"));
 		}
-		return /* @__PURE__ */ react.cloneElement(newElement, mergedProps);
+		return /* @__PURE__ */ React.cloneElement(newElement, mergedProps);
 	}
 	if (element) {
 		if (typeof element === "string") return renderTag(element, props);
@@ -633,17 +631,17 @@ function warnIfRenderPropLooksLikeComponent(renderFn) {
 	warn(`The \`render\` prop received a function named \`${functionName}\` that starts with an uppercase letter.`, "This usually means a React component was passed directly as `render={Component}`.", "Base UI calls `render` as a plain function, which can break the Rules of Hooks during reconciliation.", "If this is an intentional render callback, rename it to start with a lowercase letter.", "Use `render={<Component />}` or `render={(props) => <Component {...props} />}` instead.", "https://base-ui.com/r/invalid-render-prop");
 }
 function renderTag(Tag, props) {
-	if (Tag === "button") return /* @__PURE__ */ (0, react.createElement)("button", {
+	if (Tag === "button") return /* @__PURE__ */ createElement("button", {
 		type: "button",
 		...props,
 		key: props.key
 	});
-	if (Tag === "img") return /* @__PURE__ */ (0, react.createElement)("img", {
+	if (Tag === "img") return /* @__PURE__ */ createElement("img", {
 		alt: "",
 		...props,
 		key: props.key
 	});
-	return /* @__PURE__ */ react.createElement(Tag, props);
+	return /* @__PURE__ */ React.createElement(Tag, props);
 }
 //#endregion
 //#region node_modules/@base-ui/react/esm/button/Button.js
@@ -653,7 +651,7 @@ function renderTag(Tag, props) {
 *
 * Documentation: [Base UI Button](https://base-ui.com/react/components/button)
 */
-var Button$1 = /* @__PURE__ */ react.forwardRef(function Button(componentProps, forwardedRef) {
+var Button$1 = /* @__PURE__ */ React.forwardRef(function Button(componentProps, forwardedRef) {
 	const { render, className, disabled = false, focusableWhenDisabled = false, nativeButton = true, ...elementProps } = componentProps;
 	const { getButtonProps, buttonRef } = useButton({
 		disabled,
@@ -2731,7 +2729,7 @@ var buttonVariants = cva("group/button inline-flex shrink-0 items-center justify
 	}
 });
 function Button({ className, variant = "default", size = "default", ...props }) {
-	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(Button$1, {
+	return /* @__PURE__ */ jsx(Button$1, {
 		"data-slot": "button",
 		className: cn(buttonVariants({
 			variant,
@@ -2744,11 +2742,11 @@ function Button({ className, variant = "default", size = "default", ...props }) 
 //#endregion
 //#region node_modules/@base-ui/utils/esm/useControlled.js
 function useControlled({ controlled, default: defaultProp, name, state = "value" }) {
-	const { current: isControlled } = react.useRef(controlled !== void 0);
-	const [valueState, setValue] = react.useState(defaultProp);
+	const { current: isControlled } = React.useRef(controlled !== void 0);
+	const [valueState, setValue] = React.useState(defaultProp);
 	const value = isControlled ? controlled : valueState;
 	if (process.env.NODE_ENV !== "production") {
-		react.useEffect(() => {
+		React.useEffect(() => {
 			if (isControlled !== (controlled !== void 0)) console.error([
 				`Base UI: A component is changing the ${isControlled ? "" : "un"}controlled ${state} state of ${name} to be ${isControlled ? "un" : ""}controlled.`,
 				"Elements should not switch from uncontrolled to controlled (or vice versa).",
@@ -2761,18 +2759,18 @@ function useControlled({ controlled, default: defaultProp, name, state = "value"
 			name,
 			controlled
 		]);
-		const { current: defaultValue } = react.useRef(defaultProp);
-		react.useEffect(() => {
+		const { current: defaultValue } = React.useRef(defaultProp);
+		React.useEffect(() => {
 			if (!isControlled && JSON.stringify(defaultValue) !== JSON.stringify(defaultProp)) console.error([`Base UI: A component is changing the default ${state} state of an uncontrolled ${name} after being initialized. To suppress this warning opt to use a controlled ${name}.`].join("\n"));
 		}, [JSON.stringify(defaultProp)]);
 	}
-	return [value, react.useCallback((newValue) => {
+	return [value, React.useCallback((newValue) => {
 		if (!isControlled) setValue(newValue);
 	}, [])];
 }
 //#endregion
 //#region node_modules/@base-ui/react/esm/composite/list/CompositeListContext.js
-var CompositeListContext = /* @__PURE__ */ react.createContext({
+var CompositeListContext = /* @__PURE__ */ React.createContext({
 	register: () => {},
 	unregister: () => {},
 	subscribeMapChange: () => {
@@ -2783,7 +2781,7 @@ var CompositeListContext = /* @__PURE__ */ react.createContext({
 });
 if (process.env.NODE_ENV !== "production") CompositeListContext.displayName = "CompositeListContext";
 function useCompositeListContext() {
-	return react.useContext(CompositeListContext);
+	return React.useContext(CompositeListContext);
 }
 //#endregion
 //#region node_modules/@base-ui/react/esm/composite/list/CompositeList.js
@@ -2794,11 +2792,11 @@ function useCompositeListContext() {
 function CompositeList(props) {
 	const { children, elementsRef, labelsRef, onMapChange: onMapChangeProp } = props;
 	const onMapChange = useStableCallback(onMapChangeProp);
-	const nextIndexRef = react.useRef(0);
+	const nextIndexRef = React.useRef(0);
 	const listeners = useRefWithInit(createListeners).current;
 	const map = useRefWithInit(createMap).current;
-	const [mapTick, setMapTick] = react.useState(0);
-	const lastTickRef = react.useRef(mapTick);
+	const [mapTick, setMapTick] = React.useState(0);
+	const lastTickRef = React.useRef(mapTick);
 	const register = useStableCallback((node, metadata) => {
 		map.set(node, metadata ?? null);
 		lastTickRef.current += 1;
@@ -2809,7 +2807,7 @@ function CompositeList(props) {
 		lastTickRef.current += 1;
 		setMapTick(lastTickRef.current);
 	});
-	const sortedMap = react.useMemo(() => {
+	const sortedMap = React.useMemo(() => {
 		disableEslintWarning(mapTick);
 		const newMap = /* @__PURE__ */ new Map();
 		Array.from(map.keys()).filter((node) => node.isConnected).sort(sortByDocumentPosition).forEach((node, index) => {
@@ -2875,7 +2873,7 @@ function CompositeList(props) {
 	useIsoLayoutEffect(() => {
 		listeners.forEach((l) => l(sortedMap));
 	}, [listeners, sortedMap]);
-	const contextValue = react.useMemo(() => ({
+	const contextValue = React.useMemo(() => ({
 		register,
 		unregister,
 		subscribeMapChange,
@@ -2890,7 +2888,7 @@ function CompositeList(props) {
 		labelsRef,
 		nextIndexRef
 	]);
-	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CompositeListContext.Provider, {
+	return /* @__PURE__ */ jsx(CompositeListContext.Provider, {
 		value: contextValue,
 		children
 	});
@@ -2913,17 +2911,17 @@ function disableEslintWarning(_) {}
 /**
 * @internal
 */
-var DirectionContext = /* @__PURE__ */ react.createContext(void 0);
+var DirectionContext = /* @__PURE__ */ React.createContext(void 0);
 if (process.env.NODE_ENV !== "production") DirectionContext.displayName = "DirectionContext";
 function useDirection() {
-	return react.useContext(DirectionContext)?.direction ?? "ltr";
+	return React.useContext(DirectionContext)?.direction ?? "ltr";
 }
 //#endregion
 //#region node_modules/@base-ui/react/esm/accordion/root/AccordionRootContext.js
-var AccordionRootContext = /* @__PURE__ */ react.createContext(void 0);
+var AccordionRootContext = /* @__PURE__ */ React.createContext(void 0);
 if (process.env.NODE_ENV !== "production") AccordionRootContext.displayName = "AccordionRootContext";
 function useAccordionRootContext() {
-	const context = react.useContext(AccordionRootContext);
+	const context = React.useContext(AccordionRootContext);
 	if (context === void 0) throw new Error(process.env.NODE_ENV !== "production" ? "Base UI: AccordionRootContext is missing. Accordion parts must be placed within <Accordion.Root>." : formatErrorMessage(10));
 	return context;
 }
@@ -2978,17 +2976,17 @@ var rootStateAttributesMapping = { value: () => null };
 *
 * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
 */
-var AccordionRoot = /* @__PURE__ */ react.forwardRef(function AccordionRoot(componentProps, forwardedRef) {
+var AccordionRoot = /* @__PURE__ */ React.forwardRef(function AccordionRoot(componentProps, forwardedRef) {
 	const { render, className, disabled = false, hiddenUntilFound: hiddenUntilFoundProp, keepMounted: keepMountedProp, loopFocus = true, onValueChange: onValueChangeProp, multiple = false, orientation = "vertical", value: valueProp, defaultValue: defaultValueProp, ...elementProps } = componentProps;
 	const direction = useDirection();
 	if (process.env.NODE_ENV !== "production") useIsoLayoutEffect(() => {
 		if (hiddenUntilFoundProp && keepMountedProp === false) warn("The `keepMounted={false}` prop on a Accordion.Root will be ignored when using `hiddenUntilFound` since it requires Panels to remain mounted when closed.");
 	}, [hiddenUntilFoundProp, keepMountedProp]);
-	const defaultValue = react.useMemo(() => {
+	const defaultValue = React.useMemo(() => {
 		if (valueProp === void 0) return defaultValueProp ?? [];
 	}, [valueProp, defaultValueProp]);
 	const onValueChange = useStableCallback(onValueChangeProp);
-	const accordionItemRefs = react.useRef([]);
+	const accordionItemRefs = React.useRef([]);
 	const [value, setValue] = useControlled({
 		controlled: valueProp,
 		default: defaultValue,
@@ -3015,7 +3013,7 @@ var AccordionRoot = /* @__PURE__ */ react.forwardRef(function AccordionRoot(comp
 			setValue(nextOpenValues);
 		}
 	});
-	const state = react.useMemo(() => ({
+	const state = React.useMemo(() => ({
 		value,
 		disabled,
 		orientation
@@ -3024,7 +3022,7 @@ var AccordionRoot = /* @__PURE__ */ react.forwardRef(function AccordionRoot(comp
 		disabled,
 		orientation
 	]);
-	const contextValue = react.useMemo(() => ({
+	const contextValue = React.useMemo(() => ({
 		accordionItemRefs,
 		direction,
 		disabled,
@@ -3055,9 +3053,9 @@ var AccordionRoot = /* @__PURE__ */ react.forwardRef(function AccordionRoot(comp
 		}, elementProps],
 		stateAttributesMapping: rootStateAttributesMapping
 	});
-	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(AccordionRootContext.Provider, {
+	return /* @__PURE__ */ jsx(AccordionRootContext.Provider, {
 		value: contextValue,
-		children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CompositeList, {
+		children: /* @__PURE__ */ jsx(CompositeList, {
 			elementsRef: accordionItemRefs,
 			children: element
 		})
@@ -3068,9 +3066,9 @@ if (process.env.NODE_ENV !== "production") AccordionRoot.displayName = "Accordio
 //#region node_modules/@base-ui/utils/esm/useId.js
 var globalId = 0;
 function useGlobalId(idOverride, prefix = "mui") {
-	const [defaultId, setDefaultId] = react.useState(idOverride);
+	const [defaultId, setDefaultId] = React.useState(idOverride);
 	const id = idOverride || defaultId;
-	react.useEffect(() => {
+	React.useEffect(() => {
 		if (defaultId == null) {
 			globalId += 1;
 			setDefaultId(`${prefix}-${globalId}`);
@@ -3109,7 +3107,7 @@ var EMPTY$1 = [];
 * A React.useEffect equivalent that runs once, when the component is mounted.
 */
 function useOnMount(fn) {
-	react.useEffect(fn, EMPTY$1);
+	React.useEffect(fn, EMPTY$1);
 }
 //#endregion
 //#region node_modules/@base-ui/utils/esm/useAnimationFrame.js
@@ -3238,7 +3236,7 @@ function useAnimationsFinished(elementOrRef, waitForStartingStyleRemoved = false
 	return useStableCallback((fnToExecute, signal = null) => {
 		frame.cancel();
 		function done() {
-			react_dom.flushSync(fnToExecute);
+			ReactDOM.flushSync(fnToExecute);
 		}
 		const element = resolveRef(elementOrRef);
 		if (element == null) return;
@@ -3291,8 +3289,8 @@ function useAnimationsFinished(elementOrRef, waitForStartingStyleRemoved = false
 * @param enableIdleState - a boolean that enables the `'idle'` state between `'starting'` and `'ending'`
 */
 function useTransitionStatus(open, enableIdleState = false, deferEndingState = false) {
-	const [transitionStatus, setTransitionStatus] = react.useState(open && enableIdleState ? "idle" : void 0);
-	const [mounted, setMounted] = react.useState(open);
+	const [transitionStatus, setTransitionStatus] = React.useState(open && enableIdleState ? "idle" : void 0);
+	const [mounted, setMounted] = React.useState(open);
 	if (open && !mounted) {
 		setMounted(true);
 		setTransitionStatus("starting");
@@ -3339,7 +3337,7 @@ function useTransitionStatus(open, enableIdleState = false, deferEndingState = f
 		setTransitionStatus,
 		transitionStatus
 	]);
-	return react.useMemo(() => ({
+	return React.useMemo(() => ({
 		mounted,
 		setMounted,
 		transitionStatus
@@ -3357,20 +3355,20 @@ function useCollapsibleRoot(parameters) {
 		state: "open"
 	});
 	const { mounted, setMounted, transitionStatus } = useTransitionStatus(open, true, true);
-	const [visible, setVisible] = react.useState(open);
-	const [{ height, width }, setDimensions] = react.useState({
+	const [visible, setVisible] = React.useState(open);
+	const [{ height, width }, setDimensions] = React.useState({
 		height: void 0,
 		width: void 0
 	});
 	const defaultPanelId = useBaseUiId();
-	const [panelIdState, setPanelIdState] = react.useState();
+	const [panelIdState, setPanelIdState] = React.useState();
 	const panelId = panelIdState ?? defaultPanelId;
-	const [hiddenUntilFound, setHiddenUntilFound] = react.useState(false);
-	const [keepMounted, setKeepMounted] = react.useState(false);
-	const abortControllerRef = react.useRef(null);
-	const animationTypeRef = react.useRef(null);
-	const transitionDimensionRef = react.useRef(null);
-	const panelRef = react.useRef(null);
+	const [hiddenUntilFound, setHiddenUntilFound] = React.useState(false);
+	const [keepMounted, setKeepMounted] = React.useState(false);
+	const abortControllerRef = React.useRef(null);
+	const animationTypeRef = React.useRef(null);
+	const transitionDimensionRef = React.useRef(null);
+	const panelRef = React.useRef(null);
 	const runOnceAnimationsFinish = useAnimationsFinished(panelRef, false);
 	const handleTrigger = useStableCallback((event) => {
 		const nextOpen = !open;
@@ -3404,7 +3402,7 @@ function useCollapsibleRoot(parameters) {
 		openParam,
 		setMounted
 	]);
-	return react.useMemo(() => ({
+	return React.useMemo(() => ({
 		abortControllerRef,
 		animationTypeRef,
 		disabled,
@@ -3451,10 +3449,10 @@ function useCollapsibleRoot(parameters) {
 }
 //#endregion
 //#region node_modules/@base-ui/react/esm/collapsible/root/CollapsibleRootContext.js
-var CollapsibleRootContext = /* @__PURE__ */ react.createContext(void 0);
+var CollapsibleRootContext = /* @__PURE__ */ React.createContext(void 0);
 if (process.env.NODE_ENV !== "production") CollapsibleRootContext.displayName = "CollapsibleRootContext";
 function useCollapsibleRootContext() {
-	const context = react.useContext(CollapsibleRootContext);
+	const context = React.useContext(CollapsibleRootContext);
 	if (context === void 0) throw new Error(process.env.NODE_ENV !== "production" ? "Base UI: CollapsibleRootContext is missing. Collapsible parts must be placed within <Collapsible.Root>." : formatErrorMessage(15));
 	return context;
 }
@@ -3471,8 +3469,8 @@ var IndexGuessBehavior = /* @__PURE__ */ function(IndexGuessBehavior) {
 function useCompositeListItem(params = {}) {
 	const { label, metadata, textRef, indexGuessBehavior, index: externalIndex } = params;
 	const { register, unregister, subscribeMapChange, elementsRef, labelsRef, nextIndexRef } = useCompositeListContext();
-	const indexRef = react.useRef(-1);
-	const [index, setIndex] = react.useState(externalIndex ?? (indexGuessBehavior === IndexGuessBehavior.GuessFromOrder ? () => {
+	const indexRef = React.useRef(-1);
+	const [index, setIndex] = React.useState(externalIndex ?? (indexGuessBehavior === IndexGuessBehavior.GuessFromOrder ? () => {
 		if (indexRef.current === -1) {
 			const newIndex = nextIndexRef.current;
 			nextIndexRef.current += 1;
@@ -3480,8 +3478,8 @@ function useCompositeListItem(params = {}) {
 		}
 		return indexRef.current;
 	} : -1));
-	const componentRef = react.useRef(null);
-	const ref = react.useCallback((node) => {
+	const componentRef = React.useRef(null);
+	const ref = React.useCallback((node) => {
 		componentRef.current = node;
 		if (index !== -1 && node !== null) {
 			elementsRef.current[index] = node;
@@ -3523,17 +3521,17 @@ function useCompositeListItem(params = {}) {
 		subscribeMapChange,
 		setIndex
 	]);
-	return react.useMemo(() => ({
+	return React.useMemo(() => ({
 		ref,
 		index
 	}), [index, ref]);
 }
 //#endregion
 //#region node_modules/@base-ui/react/esm/accordion/item/AccordionItemContext.js
-var AccordionItemContext = /* @__PURE__ */ react.createContext(void 0);
+var AccordionItemContext = /* @__PURE__ */ React.createContext(void 0);
 if (process.env.NODE_ENV !== "production") AccordionItemContext.displayName = "AccordionItemContext";
 function useAccordionItemContext() {
-	const context = react.useContext(AccordionItemContext);
+	const context = React.useContext(AccordionItemContext);
 	if (context === void 0) throw new Error(process.env.NODE_ENV !== "production" ? "Base UI: AccordionItemContext is missing. Accordion parts must be placed within <Accordion.Item>." : formatErrorMessage(9));
 	return context;
 }
@@ -3615,7 +3613,7 @@ var accordionStateAttributesMapping = {
 *
 * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
 */
-var AccordionItem$1 = /* @__PURE__ */ react.forwardRef(function AccordionItem(componentProps, forwardedRef) {
+var AccordionItem$1 = /* @__PURE__ */ React.forwardRef(function AccordionItem(componentProps, forwardedRef) {
 	const { className, disabled: disabledProp = false, onOpenChange: onOpenChangeProp, render, value: valueProp, ...elementProps } = componentProps;
 	const { ref: listItemRef, index } = useCompositeListItem();
 	const mergedRef = useMergedRefs(forwardedRef, listItemRef);
@@ -3623,7 +3621,7 @@ var AccordionItem$1 = /* @__PURE__ */ react.forwardRef(function AccordionItem(co
 	const fallbackValue = useBaseUiId();
 	const value = valueProp ?? fallbackValue;
 	const disabled = disabledProp || contextDisabled;
-	const isOpen = react.useMemo(() => {
+	const isOpen = React.useMemo(() => {
 		if (!openValues) return false;
 		for (let i = 0; i < openValues.length; i += 1) if (openValues[i] === value) return true;
 		return false;
@@ -3638,7 +3636,7 @@ var AccordionItem$1 = /* @__PURE__ */ react.forwardRef(function AccordionItem(co
 		onOpenChange,
 		disabled
 	});
-	const collapsibleState = react.useMemo(() => ({
+	const collapsibleState = React.useMemo(() => ({
 		open: collapsible.open,
 		disabled: collapsible.disabled,
 		hidden: !collapsible.mounted,
@@ -3649,7 +3647,7 @@ var AccordionItem$1 = /* @__PURE__ */ react.forwardRef(function AccordionItem(co
 		collapsible.mounted,
 		collapsible.transitionStatus
 	]);
-	const collapsibleContext = react.useMemo(() => ({
+	const collapsibleContext = React.useMemo(() => ({
 		...collapsible,
 		onOpenChange,
 		state: collapsibleState
@@ -3658,7 +3656,7 @@ var AccordionItem$1 = /* @__PURE__ */ react.forwardRef(function AccordionItem(co
 		collapsibleState,
 		onOpenChange
 	]);
-	const state = react.useMemo(() => ({
+	const state = React.useMemo(() => ({
 		...rootState,
 		index,
 		disabled,
@@ -3669,8 +3667,8 @@ var AccordionItem$1 = /* @__PURE__ */ react.forwardRef(function AccordionItem(co
 		isOpen,
 		rootState
 	]);
-	const [triggerId, setTriggerId] = react.useState(useBaseUiId());
-	const accordionItemContext = react.useMemo(() => ({
+	const [triggerId, setTriggerId] = React.useState(useBaseUiId());
+	const accordionItemContext = React.useMemo(() => ({
 		open: isOpen,
 		state,
 		setTriggerId,
@@ -3687,9 +3685,9 @@ var AccordionItem$1 = /* @__PURE__ */ react.forwardRef(function AccordionItem(co
 		props: elementProps,
 		stateAttributesMapping: accordionStateAttributesMapping
 	});
-	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CollapsibleRootContext.Provider, {
+	return /* @__PURE__ */ jsx(CollapsibleRootContext.Provider, {
 		value: collapsibleContext,
-		children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(AccordionItemContext.Provider, {
+		children: /* @__PURE__ */ jsx(AccordionItemContext.Provider, {
 			value: accordionItemContext,
 			children: element
 		})
@@ -3704,7 +3702,7 @@ if (process.env.NODE_ENV !== "production") AccordionItem$1.displayName = "Accord
 *
 * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
 */
-var AccordionHeader = /* @__PURE__ */ react.forwardRef(function AccordionHeader(componentProps, forwardedRef) {
+var AccordionHeader = /* @__PURE__ */ React.forwardRef(function AccordionHeader(componentProps, forwardedRef) {
 	const { render, className, ...elementProps } = componentProps;
 	const { state } = useAccordionItemContext();
 	return useRenderElement("h3", componentProps, {
@@ -3769,7 +3767,7 @@ function getActiveTriggers(accordionItemRefs) {
 *
 * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
 */
-var AccordionTrigger$1 = /* @__PURE__ */ react.forwardRef(function AccordionTrigger(componentProps, forwardedRef) {
+var AccordionTrigger$1 = /* @__PURE__ */ React.forwardRef(function AccordionTrigger(componentProps, forwardedRef) {
 	const { disabled: disabledProp, className, id: idProp, render, nativeButton = true, ...elementProps } = componentProps;
 	const { panelId, open, handleTrigger, disabled: contextDisabled } = useCollapsibleRootContext();
 	const { getButtonProps, buttonRef } = useButton({
@@ -3788,7 +3786,7 @@ var AccordionTrigger$1 = /* @__PURE__ */ react.forwardRef(function AccordionTrig
 			setTriggerId(void 0);
 		};
 	}, [idProp, setTriggerId]);
-	const props = react.useMemo(() => ({
+	const props = React.useMemo(() => ({
 		"aria-controls": open ? panelId : void 0,
 		"aria-expanded": open,
 		id,
@@ -3873,16 +3871,16 @@ var AccordionRootDataAttributes = /* @__PURE__ */ function(AccordionRootDataAttr
 //#region node_modules/@base-ui/react/esm/collapsible/panel/useCollapsiblePanel.js
 function useCollapsiblePanel(parameters) {
 	const { abortControllerRef, animationTypeRef, externalRef, height, hiddenUntilFound, keepMounted, id: idParam, mounted, onOpenChange, open, panelRef, runOnceAnimationsFinish, setDimensions, setMounted, setOpen, setVisible, transitionDimensionRef, visible, width } = parameters;
-	const isBeforeMatchRef = react.useRef(false);
-	const latestAnimationNameRef = react.useRef(null);
-	const shouldCancelInitialOpenAnimationRef = react.useRef(open);
-	const shouldCancelInitialOpenTransitionRef = react.useRef(open);
+	const isBeforeMatchRef = React.useRef(false);
+	const latestAnimationNameRef = React.useRef(null);
+	const shouldCancelInitialOpenAnimationRef = React.useRef(open);
+	const shouldCancelInitialOpenTransitionRef = React.useRef(open);
 	const endingStyleFrame = useAnimationFrame();
 	/**
 	* When opening, the `hidden` attribute is removed immediately.
 	* When closing, the `hidden` attribute is set after any exit animations runs.
 	*/
-	const hidden = react.useMemo(() => {
+	const hidden = React.useMemo(() => {
 		if (animationTypeRef.current === "css-animation") return !visible;
 		return !open && !mounted;
 	}, [
@@ -4133,7 +4131,7 @@ function useCollapsiblePanel(parameters) {
 		animationTypeRef,
 		panelRef
 	]);
-	react.useEffect(function registerBeforeMatchListener() {
+	React.useEffect(function registerBeforeMatchListener() {
 		const panel = panelRef.current;
 		if (!panel) return;
 		function handleBeforeMatch(event) {
@@ -4150,7 +4148,7 @@ function useCollapsiblePanel(parameters) {
 		panelRef,
 		setOpen
 	]);
-	return react.useMemo(() => ({ props: {
+	return React.useMemo(() => ({ props: {
 		hidden,
 		id: idParam,
 		ref: mergedPanelRef
@@ -4184,7 +4182,7 @@ function useOpenChangeComplete(parameters) {
 	const { enabled = true, open, ref, onComplete: onCompleteParam } = parameters;
 	const onComplete = useStableCallback(onCompleteParam);
 	const runOnceAnimationsFinish = useAnimationsFinished(ref, open, false);
-	react.useEffect(() => {
+	React.useEffect(() => {
 		if (!enabled) return;
 		const abortController = new AbortController();
 		runOnceAnimationsFinish(onComplete, abortController.signal);
@@ -4206,7 +4204,7 @@ function useOpenChangeComplete(parameters) {
 *
 * Documentation: [Base UI Accordion](https://base-ui.com/react/components/accordion)
 */
-var AccordionPanel = /* @__PURE__ */ react.forwardRef(function AccordionPanel(componentProps, forwardedRef) {
+var AccordionPanel = /* @__PURE__ */ React.forwardRef(function AccordionPanel(componentProps, forwardedRef) {
 	const { className, hiddenUntilFound: hiddenUntilFoundProp, keepMounted: keepMountedProp, id: idProp, render, ...elementProps } = componentProps;
 	const { hiddenUntilFound: contextHiddenUntilFound, keepMounted: contextKeepMounted } = useAccordionRootContext();
 	const { abortControllerRef, animationTypeRef, height, mounted, onOpenChange, open, panelId, panelRef, runOnceAnimationsFinish, setDimensions, setHiddenUntilFound, setKeepMounted, setMounted, setOpen, setVisible, transitionDimensionRef, visible, width, setPanelIdState, transitionStatus } = useCollapsibleRootContext();
@@ -4263,7 +4261,7 @@ var AccordionPanel = /* @__PURE__ */ react.forwardRef(function AccordionPanel(co
 	});
 	const { state, triggerId } = useAccordionItemContext();
 	const element = useRenderElement("div", componentProps, {
-		state: react.useMemo(() => ({
+		state: React.useMemo(() => ({
 			...state,
 			transitionStatus
 		}), [state, transitionStatus]),
@@ -4366,7 +4364,7 @@ var hasA11yProp = (props) => {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var Icon = (0, react.forwardRef)(({ color = "currentColor", size = 24, strokeWidth = 2, absoluteStrokeWidth, className = "", children, iconNode, ...rest }, ref) => (0, react.createElement)("svg", {
+var Icon = forwardRef(({ color = "currentColor", size = 24, strokeWidth = 2, absoluteStrokeWidth, className = "", children, iconNode, ...rest }, ref) => createElement("svg", {
 	ref,
 	...defaultAttributes,
 	width: size,
@@ -4376,7 +4374,7 @@ var Icon = (0, react.forwardRef)(({ color = "currentColor", size = 24, strokeWid
 	className: mergeClasses("lucide", className),
 	...!children && !hasA11yProp(rest) && { "aria-hidden": "true" },
 	...rest
-}, [...iconNode.map(([tag, attrs]) => (0, react.createElement)(tag, attrs)), ...Array.isArray(children) ? children : [children]]));
+}, [...iconNode.map(([tag, attrs]) => createElement(tag, attrs)), ...Array.isArray(children) ? children : [children]]));
 //#endregion
 //#region node_modules/lucide-react/dist/esm/createLucideIcon.js
 /**
@@ -4386,7 +4384,7 @@ var Icon = (0, react.forwardRef)(({ color = "currentColor", size = 24, strokeWid
 * See the LICENSE file in the root directory of this source tree.
 */
 var createLucideIcon = (iconName, iconNode) => {
-	const Component = (0, react.forwardRef)(({ className, ...props }, ref) => (0, react.createElement)(Icon, {
+	const Component = forwardRef(({ className, ...props }, ref) => createElement(Icon, {
 		ref,
 		iconNode,
 		className: mergeClasses(`lucide-${toKebabCase(toPascalCase(iconName))}`, `lucide-${iconName}`, className),
@@ -4406,33 +4404,33 @@ var ChevronUp = createLucideIcon("chevron-up", [["path", {
 //#endregion
 //#region src/components/shadcn/ui/accordion.tsx
 function Accordion({ className, ...props }) {
-	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(AccordionRoot, {
+	return /* @__PURE__ */ jsx(AccordionRoot, {
 		"data-slot": "accordion",
 		className: cn("flex w-full flex-col", className),
 		...props
 	});
 }
 function AccordionItem({ className, ...props }) {
-	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(AccordionItem$1, {
+	return /* @__PURE__ */ jsx(AccordionItem$1, {
 		"data-slot": "accordion-item",
 		className: cn("not-last:border-b", className),
 		...props
 	});
 }
 function AccordionTrigger({ className, children, ...props }) {
-	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(AccordionHeader, {
+	return /* @__PURE__ */ jsx(AccordionHeader, {
 		className: "flex",
-		children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(AccordionTrigger$1, {
+		children: /* @__PURE__ */ jsxs(AccordionTrigger$1, {
 			"data-slot": "accordion-trigger",
 			className: cn("group/accordion-trigger relative flex flex-1 items-start justify-between rounded-lg border border-transparent py-2.5 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:after:border-ring aria-disabled:pointer-events-none aria-disabled:opacity-50 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 **:data-[slot=accordion-trigger-icon]:text-muted-foreground", className),
 			...props,
 			children: [
 				children,
-				/* @__PURE__ */ (0, react_jsx_runtime.jsx)(ChevronDown, {
+				/* @__PURE__ */ jsx(ChevronDown, {
 					"data-slot": "accordion-trigger-icon",
 					className: "pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
 				}),
-				/* @__PURE__ */ (0, react_jsx_runtime.jsx)(ChevronUp, {
+				/* @__PURE__ */ jsx(ChevronUp, {
 					"data-slot": "accordion-trigger-icon",
 					className: "pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
 				})
@@ -4441,62 +4439,88 @@ function AccordionTrigger({ className, children, ...props }) {
 	});
 }
 function AccordionContent({ className, children, ...props }) {
-	return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(AccordionPanel, {
+	return /* @__PURE__ */ jsx(AccordionPanel, {
 		"data-slot": "accordion-content",
 		className: "overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up",
 		...props,
-		children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
+		children: /* @__PURE__ */ jsx("div", {
 			className: cn("h-(--accordion-panel-height) pt-0 pb-2.5 data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4", className),
 			children
 		})
 	});
 }
 //#endregion
-Object.defineProperty(exports, "Accordion", {
-	enumerable: true,
-	get: function() {
-		return Accordion;
-	}
+//#region src/components/shadcn/ui/alert.tsx
+var alertVariants = cva("group/alert relative grid w-full gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4", {
+	variants: { variant: {
+		default: "bg-card text-card-foreground",
+		destructive: "bg-card text-destructive *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current"
+	} },
+	defaultVariants: { variant: "default" }
 });
-Object.defineProperty(exports, "AccordionContent", {
-	enumerable: true,
-	get: function() {
-		return AccordionContent;
-	}
+function Alert({ className, variant, ...props }) {
+	return /* @__PURE__ */ jsx("div", {
+		"data-slot": "alert",
+		role: "alert",
+		className: cn(alertVariants({ variant }), className),
+		...props
+	});
+}
+function AlertTitle({ className, ...props }) {
+	return /* @__PURE__ */ jsx("div", {
+		"data-slot": "alert-title",
+		className: cn("font-medium group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground", className),
+		...props
+	});
+}
+function AlertDescription({ className, ...props }) {
+	return /* @__PURE__ */ jsx("div", {
+		"data-slot": "alert-description",
+		className: cn("text-sm text-balance text-muted-foreground md:text-pretty [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4", className),
+		...props
+	});
+}
+function AlertAction({ className, ...props }) {
+	return /* @__PURE__ */ jsx("div", {
+		"data-slot": "alert-action",
+		className: cn("absolute top-2 right-2", className),
+		...props
+	});
+}
+//#endregion
+//#region node_modules/@base-ui/react/esm/use-render/useRender.js
+/**
+* Renders a Base UI element.
+*
+* @public
+*/
+function useRender(params) {
+	return useRenderElement(params.defaultTagName ?? "div", params, params);
+}
+//#endregion
+//#region src/components/shadcn/ui/badge.tsx
+var badgeVariantsConfig = { variant: {
+	default: "bg-primary text-primary-foreground [a]:hover:bg-primary/80",
+	secondary: "bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80",
+	destructive: "bg-destructive/10 text-destructive focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:focus-visible:ring-destructive/40 [a]:hover:bg-destructive/20",
+	outline: "border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground",
+	ghost: "hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50",
+	link: "text-primary underline-offset-4 hover:underline"
+} };
+var badgeVariants = cva("group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!", {
+	variants: badgeVariantsConfig,
+	defaultVariants: { variant: "default" }
 });
-Object.defineProperty(exports, "AccordionItem", {
-	enumerable: true,
-	get: function() {
-		return AccordionItem;
-	}
-});
-Object.defineProperty(exports, "AccordionTrigger", {
-	enumerable: true,
-	get: function() {
-		return AccordionTrigger;
-	}
-});
-Object.defineProperty(exports, "Button", {
-	enumerable: true,
-	get: function() {
-		return Button;
-	}
-});
-Object.defineProperty(exports, "buttonVariants", {
-	enumerable: true,
-	get: function() {
-		return buttonVariants;
-	}
-});
-Object.defineProperty(exports, "buttonVariantsConfig", {
-	enumerable: true,
-	get: function() {
-		return buttonVariantsConfig;
-	}
-});
-Object.defineProperty(exports, "cn", {
-	enumerable: true,
-	get: function() {
-		return cn;
-	}
-});
+function Badge({ className, variant = "default", render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		props: mergeProps({ className: cn(badgeVariants({ variant }), className) }, props),
+		render,
+		state: {
+			slot: "badge",
+			variant
+		}
+	});
+}
+//#endregion
+export { AlertAction as a, Accordion as c, AccordionTrigger as d, Button as f, cn as h, Alert as i, AccordionContent as l, buttonVariantsConfig as m, badgeVariants as n, AlertDescription as o, buttonVariants as p, badgeVariantsConfig as r, AlertTitle as s, Badge as t, AccordionItem as u };

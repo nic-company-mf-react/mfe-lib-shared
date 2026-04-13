@@ -1,5 +1,7 @@
 export { Button, buttonVariants } from './components/shadcn/ui/button';
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './components/shadcn/ui/accordion';
+export { Alert, AlertTitle, AlertDescription, AlertAction } from './components/shadcn/ui/alert';
+export { Badge, badgeVariants, badgeVariantsConfig } from './components/shadcn/ui/badge';
 export { AppProviders } from './components/providers/AppProviders';
 export { default as CodeBlockClient } from './components/code-block/CodeBlockClient';
 export { cn } from './components/shadcn/lib/utils';

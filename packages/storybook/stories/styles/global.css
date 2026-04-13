@@ -1,5 +1,7 @@
 /* Storybook 전역 스타일 */
 @import "tailwindcss";
+/* 스토리(.tsx)에만 쓰인 유틸 클래스는 기본 @source( src/components/shadcn )에 없어 purge 됨 → 여기서 스캔 */
+@source "../**/*.{tsx,ts,mdx}";
 @import "../../../../src/styles/index.css";
 
 *,
