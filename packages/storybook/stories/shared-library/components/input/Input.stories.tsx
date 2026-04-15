@@ -1,20 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
-import { Button, Input } from '@nic/mfe-lib-shared/components/ui';
+import { Button, Input } from '@axiom/mfe-lib-shared/components/ui';
 import React from 'react';
 
-const typeOptions = [
-	'text',
-	'search',
-	'email',
-	'password',
-	'number',
-	'tel',
-	'url',
-	'file',
-	'date',
-	'time',
-] as const;
+const typeOptions = ['text', 'search', 'email', 'password', 'number', 'tel', 'url', 'file', 'date', 'time'] as const;
 
 const meta = {
 	title: 'Components/Input',
@@ -24,16 +13,16 @@ const meta = {
 		docs: {
 			description: {
 				component: `
-\`Input\` 컴포넌트는 \`@nic/mfe-lib-shared\` 에서 제공하는 텍스트 입력 UI입니다. ([shadcn/ui Input (Base UI)](https://ui.shadcn.com/docs/components/base/input), [Base UI Input](https://base-ui.com/react/components/input) 기반)
+\`Input\` 컴포넌트는 \`@axiom/mfe-lib-shared\` 에서 제공하는 텍스트 입력 UI입니다. ([shadcn/ui Input (Base UI)](https://ui.shadcn.com/docs/components/base/input), [Base UI Input](https://base-ui.com/react/components/input) 기반)
 
 폼·검색·설정 화면 등에서 사용자 문자열을 받을 때 사용합니다. \`type\`, \`placeholder\`, \`disabled\`, \`aria-invalid\` 등 표준 \`<input>\` 속성을 그대로 쓸 수 있습니다.
 
 ### 임포트
 
 \`\`\`tsx
-import { Input } from '@nic/mfe-lib-shared/components/ui';
+import { Input } from '@axiom/mfe-lib-shared/components/ui';
 // 또는
-import { Input } from '@nic/mfe-lib-shared/components';
+import { Input } from '@axiom/mfe-lib-shared/components';
 \`\`\`
 
 ### 기본 사용법

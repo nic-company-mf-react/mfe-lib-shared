@@ -15,7 +15,7 @@ import {
 	ComboboxList,
 	ComboboxSeparator,
 	ComboboxValue,
-} from '@nic/mfe-lib-shared/components/ui';
+} from '@axiom/mfe-lib-shared/components/ui';
 import React from 'react';
 
 /** [shadcn/ui Combobox (Base UI)](https://ui.shadcn.com/docs/components/base/combobox) 예시와 동일한 데이터 */
@@ -55,9 +55,9 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from '@nic/mfe-lib-shared/components/ui';
+} from '@axiom/mfe-lib-shared/components/ui';
 // 또는
-import { Combobox, ComboboxContent, ... } from '@nic/mfe-lib-shared/components';
+import { Combobox, ComboboxContent, ... } from '@axiom/mfe-lib-shared/components';
 \`\`\`
 
 ### 기본 사용법 (\`items\` + 목록 렌더 함수)

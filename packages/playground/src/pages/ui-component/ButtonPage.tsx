@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { Button } from '@nic/mfe-lib-shared/components/ui';
+import { Button } from '@axiom/mfe-lib-shared/components/ui';
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
 	return (
@@ -41,7 +41,7 @@ export default function ButtonPage(): ReactNode {
 			<div>
 				<h1 className="text-2xl font-bold tracking-tight">Button</h1>
 				<p className="text-sm text-muted-foreground mt-1">
-					<code className="bg-muted px-1 rounded text-xs">@nic/mfe-lib-shared</code> 에서 제공하는 기본 버튼
+					<code className="bg-muted px-1 rounded text-xs">@axiom/mfe-lib-shared</code> 에서 제공하는 기본 버튼
 					컴포넌트입니다.
 				</p>
 			</div>

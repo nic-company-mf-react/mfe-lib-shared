@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button, Toaster, toast } from '@nic/mfe-lib-shared/components/ui';
-import { ThemeProvider } from '@nic/mfe-lib-shared/context';
+import { Button, Toaster, toast } from '@axiom/mfe-lib-shared/components/ui';
+import { ThemeProvider } from '@axiom/mfe-lib-shared/context';
 
 const positionOptions = [
 	'top-left',
@@ -26,17 +26,17 @@ const meta = {
 		docs: {
 			description: {
 				component: `
-\`Toaster\`는 \`@nic/mfe-lib-shared\`에서 제공하는 토스트(알림) 영역입니다. ([shadcn/ui Sonner (Base UI)](https://ui.shadcn.com/docs/components/base/sonner) · [Sonner](https://github.com/emilkowalski/sonner) 기반)
+\`Toaster\`는 \`@axiom/mfe-lib-shared\`에서 제공하는 토스트(알림) 영역입니다. ([shadcn/ui Sonner (Base UI)](https://ui.shadcn.com/docs/components/base/sonner) · [Sonner](https://github.com/emilkowalski/sonner) 기반)
 
-앱 레이아웃(또는 Provider 트리) 하단에 \`<Toaster />\`를 한 번 마운트하고, 화면 어디서든 \`toast()\`로 알림을 띄웁니다. 테마는 \`ThemeProvider\`(\`@nic/mfe-lib-shared/context\`)와 연동됩니다.
+앱 레이아웃(또는 Provider 트리) 하단에 \`<Toaster />\`를 한 번 마운트하고, 화면 어디서든 \`toast()\`로 알림을 띄웁니다. 테마는 \`ThemeProvider\`(\`@axiom/mfe-lib-shared/context\`)와 연동됩니다.
 
 ### 임포트
 
 \`\`\`tsx
-import { Toaster, toast } from '@nic/mfe-lib-shared/components/ui';
+import { Toaster, toast } from '@axiom/mfe-lib-shared/components/ui';
 //import { toast } from 'sonner';
 // 레이아웃 예시
-// import { ThemeProvider } from '@nic/mfe-lib-shared/context';
+// import { ThemeProvider } from '@axiom/mfe-lib-shared/context';
 \`\`\`
 
 ### 기본 사용법
@@ -144,7 +144,7 @@ export const Default: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `import { Toaster, toast } from '@nic/mfe-lib-shared/components/ui';
+				code: `import { Toaster, toast } from '@axiom/mfe-lib-shared/components/ui';
 //import { toast } from 'sonner';
 
 <Button onClick={() => toast('이벤트가 생성되었습니다.')}>토스트 표시</Button>
@@ -164,7 +164,7 @@ export const Types: Story = {
 		controls: { disable: true },
 		docs: {
 			source: {
-				code: `import { toast } from '@nic/mfe-lib-shared/components/ui';
+				code: `import { toast } from '@axiom/mfe-lib-shared/components/ui';
 //import { toast } from 'sonner';
 
 toast.success('저장되었습니다.');
@@ -221,7 +221,7 @@ export const WithDescription: Story = {
 		controls: { disable: true },
 		docs: {
 			source: {
-				code: `import { toast } from '@nic/mfe-lib-shared/components/ui';
+				code: `import { toast } from '@axiom/mfe-lib-shared/components/ui';
 //import { toast } from 'sonner';
 
 toast('새 메시지', {
@@ -262,7 +262,7 @@ export const PromiseToast: Story = {
 		controls: { disable: true },
 		docs: {
 			source: {
-				code: `import { toast } from '@nic/mfe-lib-shared/components/ui';
+				code: `import { toast } from '@axiom/mfe-lib-shared/components/ui';
 //import { toast } from 'sonner';
 
 toast.promise(
@@ -312,7 +312,7 @@ export const InteractiveExample: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `import { Toaster } from '@nic/mfe-lib-shared/components/ui';
+				code: `import { Toaster } from '@axiom/mfe-lib-shared/components/ui';
 //import { toast } from 'sonner';
 
 <Toaster
@@ -354,7 +354,7 @@ export const WithAction: Story = {
 		controls: { disable: true },
 		docs: {
 			source: {
-				code: `import { toast } from '@nic/mfe-lib-shared/components/ui';
+				code: `import { toast } from '@axiom/mfe-lib-shared/components/ui';
 //import { toast } from 'sonner';
 
 toast('파일이 준비되었습니다.', {

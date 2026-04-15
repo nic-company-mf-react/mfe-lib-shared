@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@nic/mfe-lib-shared/components/ui';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@axiom/mfe-lib-shared/components/ui';
 import React from 'react';
 
 const singleValue = { 'basic-1': 'basic-1', 'basic-2': 'basic-2' };
@@ -18,7 +18,7 @@ const meta = {
 		docs: {
 			description: {
 				component: `
-\`Accordion\` 은 \`@nic/mfe-lib-shared\` 의 접이식 패널 UI입니다. \`AccordionItem\`, \`AccordionTrigger\`, \`AccordionContent\` 와 함께 사용합니다.
+\`Accordion\` 은 \`@axiom/mfe-lib-shared\` 의 접이식 패널 UI입니다. \`AccordionItem\`, \`AccordionTrigger\`, \`AccordionContent\` 와 함께 사용합니다.
 
 ### 임포트
 
@@ -28,7 +28,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '@nic/mfe-lib-shared/components/ui';
+} from '@axiom/mfe-lib-shared/components/ui';
 \`\`\`
 
 ### 기본 사용법 (단일 열림)

@@ -6,10 +6,12 @@ import {
 	ButtonGroupSeparator,
 	ButtonGroupText,
 	buttonGroupVariantsConfig,
-} from '@nic/mfe-lib-shared/components/ui';
+} from '@axiom/mfe-lib-shared/components/ui';
 import React from 'react';
 
-const orientationOptions = Object.keys(buttonGroupVariantsConfig.orientation) as (keyof typeof buttonGroupVariantsConfig.orientation)[];
+const orientationOptions = Object.keys(
+	buttonGroupVariantsConfig.orientation,
+) as (keyof typeof buttonGroupVariantsConfig.orientation)[];
 
 const meta = {
 	title: 'Components/ButtonGroup',
@@ -19,7 +21,7 @@ const meta = {
 		docs: {
 			description: {
 				component: `
-\`ButtonGroup\` 은 \`@nic/mfe-lib-shared\` 에서 제공하는 연결된 버튼 그룹 UI입니다. \`Button\` 과 함께 쓰며, 필요 시 \`ButtonGroupText\`, \`ButtonGroupSeparator\` 로 라벨·구분선을 넣을 수 있습니다.
+\`ButtonGroup\` 은 \`@axiom/mfe-lib-shared\` 에서 제공하는 연결된 버튼 그룹 UI입니다. \`Button\` 과 함께 쓰며, 필요 시 \`ButtonGroupText\`, \`ButtonGroupSeparator\` 로 라벨·구분선을 넣을 수 있습니다.
 
 ### 임포트
 
@@ -29,7 +31,7 @@ import {
   ButtonGroupText,
   ButtonGroupSeparator,
   Button,
-} from '@nic/mfe-lib-shared/components/ui';
+} from '@axiom/mfe-lib-shared/components/ui';
 \`\`\`
 
 ### 기본 사용법

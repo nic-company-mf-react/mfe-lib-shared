@@ -6,7 +6,7 @@ import {
 	CarouselItem,
 	CarouselNext,
 	CarouselPrevious,
-} from '@nic/mfe-lib-shared/components/ui';
+} from '@axiom/mfe-lib-shared/components/ui';
 import React from 'react';
 
 const orientationOptions = ['horizontal', 'vertical'] as const;
@@ -21,7 +21,7 @@ const meta = {
 		docs: {
 			description: {
 				component: `
-\`Carousel\` 컴포넌트는 Embla 기반 슬라이드 UI입니다. (\`@nic/mfe-lib-shared\`)
+\`Carousel\` 컴포넌트는 Embla 기반 슬라이드 UI입니다. (\`@axiom/mfe-lib-shared\`)
 
 \`Carousel\`, \`CarouselContent\`, \`CarouselItem\`, \`CarouselPrevious\`, \`CarouselNext\` 를 조합해 사용합니다.
 
@@ -34,7 +34,7 @@ import {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from '@nic/mfe-lib-shared/components/ui';
+} from '@axiom/mfe-lib-shared/components/ui';
 \`\`\`
 
 ### 기본 사용법
@@ -371,18 +371,14 @@ export const InteractiveExample: Story = {
 				{...args}
 				className={args.className ?? 'w-full'}
 			>
-				<CarouselContent
-					style={args.orientation === 'vertical' ? { height: '200px' } : undefined}
-				>
+				<CarouselContent style={args.orientation === 'vertical' ? { height: '200px' } : undefined}>
 					{slideIndices.map((n) => (
 						<CarouselItem key={n}>
 							<div style={{ padding: '0.25rem' }}>
 								<div
 									style={{
 										display: 'flex',
-										...(args.orientation === 'vertical'
-											? { minHeight: '120px' }
-											: { aspectRatio: '16 / 9' }),
+										...(args.orientation === 'vertical' ? { minHeight: '120px' } : { aspectRatio: '16 / 9' }),
 										alignItems: 'center',
 										justifyContent: 'center',
 										borderRadius: '0.5rem',

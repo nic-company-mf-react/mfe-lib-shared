@@ -1,11 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import {
-	Alert,
-	AlertAction,
-	AlertDescription,
-	AlertTitle,
-	Button,
-} from '@nic/mfe-lib-shared/components/ui';
+import { Alert, AlertAction, AlertDescription, AlertTitle, Button } from '@axiom/mfe-lib-shared/components/ui';
 import React from 'react';
 
 const variantOptions = ['default', 'destructive'] as const;
@@ -18,7 +12,7 @@ const meta = {
 		docs: {
 			description: {
 				component: `
-\`Alert\` 컴포넌트는 \`@nic/mfe-lib-shared\` 에서 제공하는 알림(안내·경고) UI입니다. \`AlertTitle\`, \`AlertDescription\`, 필요 시 \`AlertAction\` 과 함께 사용합니다.
+\`Alert\` 컴포넌트는 \`@axiom/mfe-lib-shared\` 에서 제공하는 알림(안내·경고) UI입니다. \`AlertTitle\`, \`AlertDescription\`, 필요 시 \`AlertAction\` 과 함께 사용합니다.
 
 ### 임포트
 
@@ -28,14 +22,14 @@ import {
   AlertTitle,
   AlertDescription,
   AlertAction,
-} from '@nic/mfe-lib-shared/components/ui';
+} from '@axiom/mfe-lib-shared/components/ui';
 // 또는
 import {
   Alert,
   AlertTitle,
   AlertDescription,
   AlertAction,
-} from '@nic/mfe-lib-shared/components';
+} from '@axiom/mfe-lib-shared/components';
 \`\`\`
 
 ### 기본 사용법

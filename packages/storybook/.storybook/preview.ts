@@ -2,8 +2,8 @@ import type { Preview } from '@storybook/react-vite';
 // @ts-expect-error
 import '../stories/styles/global.css';
 import React from 'react';
-import { ThemeProvider } from '@nic/mfe-lib-shared/context';
-import { Toaster } from '@nic/mfe-lib-shared/components/ui';
+import { ThemeProvider } from '@axiom/mfe-lib-shared/context';
+import { Toaster } from '@axiom/mfe-lib-shared/components/ui';
 
 // Storybook 에서 URL 파라미터로 hideDocsToc 플래그 사용하기 위한 로직(BGN) =================================
 function getHideDocsTocFlag(): boolean {

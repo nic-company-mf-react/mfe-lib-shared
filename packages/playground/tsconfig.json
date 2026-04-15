@@ -8,10 +8,10 @@
 		"strict": true,
 		"baseUrl": ".",
 		"paths": {
-			"@nic/mfe-lib-shared": ["../../src/index.ts"],
-			"@nic/mfe-lib-shared/components": ["../../src/components/index.ts"],
-			"@nic/mfe-lib-shared/components/ui": ["../../src/components/shadcn/ui/index.ts"],
-			"@nic/mfe-lib-shared/styles": ["../../src/styles/index.css"],
+			"@axiom/mfe-lib-shared": ["../../src/index.ts"],
+			"@axiom/mfe-lib-shared/components": ["../../src/components/index.ts"],
+			"@axiom/mfe-lib-shared/components/ui": ["../../src/components/shadcn/ui/index.ts"],
+			"@axiom/mfe-lib-shared/styles": ["../../src/styles/index.css"],
 			"@/*": ["../../src/*"] // ← 이것이 누락됨
 		}
 	},

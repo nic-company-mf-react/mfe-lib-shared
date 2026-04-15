@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
-import { Badge, badgeVariantsConfig, Button } from '@nic/mfe-lib-shared/components/ui';
+import { Badge, badgeVariantsConfig, Button } from '@axiom/mfe-lib-shared/components/ui';
 import React from 'react';
 
 const variantOptions = Object.keys(badgeVariantsConfig.variant) as (keyof typeof badgeVariantsConfig.variant)[];
@@ -13,16 +13,16 @@ const meta = {
 		docs: {
 			description: {
 				component: `
-\`Badge\` 컴포넌트는 \`@nic/mfe-lib-shared\` 에서 제공하는 라벨·상태 표시용 배지 UI입니다.
+\`Badge\` 컴포넌트는 \`@axiom/mfe-lib-shared\` 에서 제공하는 라벨·상태 표시용 배지 UI입니다.
 
 일반적으로 **제목·문장 옆의 개수·상태**, **탭·메뉴 라벨 모서리의 알림 숫자**, **버튼 위 작은 카운트**, **표·그리드 셀의 상태값** 등 보조 정보를 붙일 때 씁니다.
 
 ### 임포트
 
 \`\`\`tsx
-import { Badge } from '@nic/mfe-lib-shared/components/ui';
+import { Badge } from '@axiom/mfe-lib-shared/components/ui';
 // 또는
-import { Badge } from '@nic/mfe-lib-shared/components';
+import { Badge } from '@axiom/mfe-lib-shared/components';
 \`\`\`
 
 ### 기본 사용법
@@ -255,8 +255,7 @@ export const BesideTitle: Story = {
 				<Badge variant="outline">v2</Badge>
 			</div>
 			<p className="text-muted-foreground text-sm leading-relaxed">
-				문단 안에서도{' '}
-				<Badge variant="secondary">베타</Badge> 처럼 인라인으로 상태를 짧게 붙일 수 있습니다.
+				문단 안에서도 <Badge variant="secondary">베타</Badge> 처럼 인라인으로 상태를 짧게 붙일 수 있습니다.
 			</p>
 		</div>
 	),

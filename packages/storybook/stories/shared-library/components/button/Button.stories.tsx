@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
-import { Button, buttonVariantsConfig } from '@nic/mfe-lib-shared/components/ui';
+import { Button, buttonVariantsConfig } from '@axiom/mfe-lib-shared/components/ui';
 import React from 'react';
 
 const variantOptions = Object.keys(buttonVariantsConfig.variant) as (keyof typeof buttonVariantsConfig.variant)[];
@@ -14,14 +14,14 @@ const meta = {
 		docs: {
 			description: {
 				component: `
-\`Button\` 컴포넌트는 \`@nic/mfe-lib-shared\` 에서 제공하는 기본 버튼 UI입니다.
+\`Button\` 컴포넌트는 \`@axiom/mfe-lib-shared\` 에서 제공하는 기본 버튼 UI입니다.
 
 ### 임포트
 
 \`\`\`tsx
-import { Button } from '@nic/mfe-lib-shared/components/ui';
+import { Button } from '@axiom/mfe-lib-shared/components/ui';
 // 또는
-import { Button } from '@nic/mfe-lib-shared/components';
+import { Button } from '@axiom/mfe-lib-shared/components';
 \`\`\`
 
 ### 기본 사용법

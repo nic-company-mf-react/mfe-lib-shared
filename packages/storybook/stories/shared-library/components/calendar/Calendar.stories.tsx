@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button, Calendar, buttonVariantsConfig } from '@nic/mfe-lib-shared/components/ui';
+import { Button, Calendar, buttonVariantsConfig } from '@axiom/mfe-lib-shared/components/ui';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 import type { DateRange } from 'react-day-picker';
@@ -97,14 +97,14 @@ const meta = {
 		docs: {
 			description: {
 				component: `
-\`Calendar\` 컴포넌트는 \`react-day-picker\` 기반의 날짜 선택 UI입니다. (\`@nic/mfe-lib-shared\`)
+\`Calendar\` 컴포넌트는 \`react-day-picker\` 기반의 날짜 선택 UI입니다. (\`@axiom/mfe-lib-shared\`)
 
 ### 임포트
 
 \`\`\`tsx
-import { Calendar } from '@nic/mfe-lib-shared/components/ui';
+import { Calendar } from '@axiom/mfe-lib-shared/components/ui';
 // 또는
-import { Calendar } from '@nic/mfe-lib-shared/components';
+import { Calendar } from '@axiom/mfe-lib-shared/components';
 \`\`\`
 
 ### 기본 사용법 (단일 날짜)

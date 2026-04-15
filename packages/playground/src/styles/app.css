@@ -9,4 +9,4 @@
 /*@import '@fontsource-variable/inter';*/
 
 /* 공유 라이브러리에서 디자인 토큰 + 베이스 스타일 */
-@import '@nic/mfe-lib-shared/styles';
+@import '@axiom/mfe-lib-shared/styles';

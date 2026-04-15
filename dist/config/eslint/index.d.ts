@@ -7,10 +7,10 @@
  *
  * @example
  * // React 앱
- * import reactConfig from '@nic/mfe-lib-shared/config/eslint/react'
+ * import reactConfig from '@axiom/mfe-lib-shared/config/eslint/react'
  *
  * // TypeScript/JavaScript 패키지
- * import baseConfig from '@nic/mfe-lib-shared/config/eslint/base'
+ * import baseConfig from '@axiom/mfe-lib-shared/config/eslint/base'
  */
 export { default as base } from './base';
 export { default as react } from './react';

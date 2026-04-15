@@ -1,5 +1,5 @@
 // This file has been automatically migrated to valid ESM format by Storybook.
-import { fileURLToPath } from "node:url";
+import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 import { mergeConfig } from 'vite';
 import path, { dirname } from 'path';
@@ -15,7 +15,7 @@ const config: StorybookConfig = {
 	stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 	addons: [
 		{
-			name: getAbsolutePath("@storybook/addon-docs"),
+			name: getAbsolutePath('@storybook/addon-docs'),
 			options: {
 				mdxPluginOptions: {
 					mdxCompileOptions: {
@@ -24,10 +24,10 @@ const config: StorybookConfig = {
 				},
 			},
 		},
-		getAbsolutePath("@storybook/addon-a11y"),
+		getAbsolutePath('@storybook/addon-a11y'),
 	],
 	framework: {
-		name: getAbsolutePath("@storybook/react-vite"),
+		name: getAbsolutePath('@storybook/react-vite'),
 		options: {},
 	},
 	// storybook 10.3.3 버전에서 삭제되었습니다. 각 stories.tsx 파일에서 tags: ['autodocs'] 주석처리 해야함
@@ -41,51 +41,51 @@ const config: StorybookConfig = {
 			resolve: {
 				alias: [
 					{
-						find: '@nic/mfe-lib-shared/components/ui',
+						find: '@axiom/mfe-lib-shared/components/ui',
 						replacement: path.resolve(__dirname, '../../../src/components/shadcn/ui'),
 					},
 					{
-						find: '@nic/mfe-lib-shared/components',
+						find: '@axiom/mfe-lib-shared/components',
 						replacement: path.resolve(__dirname, '../../../src/components'),
 					},
 					{
-						find: '@nic/mfe-lib-shared/utils',
+						find: '@axiom/mfe-lib-shared/utils',
 						replacement: path.resolve(__dirname, '../../../src/utils'),
 					},
 					{
-						find: '@nic/mfe-lib-shared/hooks',
+						find: '@axiom/mfe-lib-shared/hooks',
 						replacement: path.resolve(__dirname, '../../../src/hooks'),
 					},
 					{
-						find: '@nic/mfe-lib-shared/types',
+						find: '@axiom/mfe-lib-shared/types',
 						replacement: path.resolve(__dirname, '../../../src/types'),
 					},
 					{
-						find: '@nic/mfe-lib-shared/context',
+						find: '@axiom/mfe-lib-shared/context',
 						replacement: path.resolve(__dirname, '../../../src/context'),
 					},
 					{
-						find: '@nic/mfe-lib-shared/api',
+						find: '@axiom/mfe-lib-shared/api',
 						replacement: path.resolve(__dirname, '../../../src/api'),
 					},
 					{
-						find: '@nic/mfe-lib-shared/query',
+						find: '@axiom/mfe-lib-shared/query',
 						replacement: path.resolve(__dirname, '../../../src/query'),
 					},
 					{
-						find: '@nic/mfe-lib-shared/i18n',
+						find: '@axiom/mfe-lib-shared/i18n',
 						replacement: path.resolve(__dirname, '../../../src/i18n'),
 					},
 					{
-						find: '@nic/mfe-lib-shared/config/eslint',
+						find: '@axiom/mfe-lib-shared/config/eslint',
 						replacement: path.resolve(__dirname, '../../../src/config/eslint'),
 					},
 					{
-						find: '@nic/mfe-lib-shared/config/prettier',
+						find: '@axiom/mfe-lib-shared/config/prettier',
 						replacement: path.resolve(__dirname, '../../../src/config/prettier'),
 					},
 					{
-						find: '@nic/mfe-lib-shared',
+						find: '@axiom/mfe-lib-shared',
 						replacement: path.resolve(__dirname, '../../../src'),
 					},
 					{
@@ -101,5 +101,5 @@ const config: StorybookConfig = {
 export default config;
 
 function getAbsolutePath(value: string): any {
-    return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+	return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
 }

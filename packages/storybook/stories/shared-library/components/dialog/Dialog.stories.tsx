@@ -11,7 +11,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 	Input,
-} from '@nic/mfe-lib-shared/components/ui';
+} from '@axiom/mfe-lib-shared/components/ui';
 import React from 'react';
 
 const meta = {
@@ -42,7 +42,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogClose,
-} from '@nic/mfe-lib-shared/components/ui';
+} from '@axiom/mfe-lib-shared/components/ui';
 // 또는
 import {
   Dialog,
@@ -53,7 +53,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogClose,
-} from '@nic/mfe-lib-shared/components';
+} from '@axiom/mfe-lib-shared/components';
 \`\`\`
 
 ### 기본 사용법

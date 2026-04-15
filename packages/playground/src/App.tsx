@@ -25,7 +25,7 @@ export default function App() {
 		<div className="min-h-screen bg-background text-foreground">
 			<header className="border-b px-6 py-4">
 				<h1 className="text-xl font-semibold tracking-tight">
-					@nic/mfe-lib-shared <span className="text-muted-foreground font-normal">— Playground</span>
+					@axiom/mfe-lib-shared <span className="text-muted-foreground font-normal">— Playground</span>
 				</h1>
 			</header>
 			<div className="flex">

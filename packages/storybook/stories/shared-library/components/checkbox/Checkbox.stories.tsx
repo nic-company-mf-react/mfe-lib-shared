@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
-import { Checkbox } from '@nic/mfe-lib-shared/components/ui';
+import { Checkbox } from '@axiom/mfe-lib-shared/components/ui';
 import React from 'react';
 
 const meta = {
@@ -11,14 +11,14 @@ const meta = {
 		docs: {
 			description: {
 				component: `
-\`Checkbox\` 컴포넌트는 \`@nic/mfe-lib-shared\` 에서 제공하는 체크박스 UI입니다. ([Base UI Checkbox](https://base-ui.com/react/components/checkbox) 기반)
+\`Checkbox\` 컴포넌트는 \`@axiom/mfe-lib-shared\` 에서 제공하는 체크박스 UI입니다. ([Base UI Checkbox](https://base-ui.com/react/components/checkbox) 기반)
 
 ### 임포트
 
 \`\`\`tsx
-import { Checkbox } from '@nic/mfe-lib-shared/components/ui';
+import { Checkbox } from '@axiom/mfe-lib-shared/components/ui';
 // 또는
-import { Checkbox } from '@nic/mfe-lib-shared/components';
+import { Checkbox } from '@axiom/mfe-lib-shared/components';
 \`\`\`
 
 ### 기본 사용법

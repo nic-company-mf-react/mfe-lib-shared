@@ -1,5 +1,5 @@
 {
-	"name": "@nic/mfe-lib-shared",
+	"name": "@axiom/mfe-lib-shared",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",

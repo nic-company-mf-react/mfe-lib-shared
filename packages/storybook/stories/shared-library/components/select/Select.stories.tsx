@@ -9,7 +9,7 @@ import {
 	SelectSeparator,
 	SelectTrigger,
 	SelectValue,
-} from '@nic/mfe-lib-shared/components/ui';
+} from '@axiom/mfe-lib-shared/components/ui';
 import React from 'react';
 
 const themeItems = [
@@ -40,9 +40,9 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from '@nic/mfe-lib-shared/components/ui';
+} from '@axiom/mfe-lib-shared/components/ui';
 // 또는
-import { Select, SelectContent, ... } from '@nic/mfe-lib-shared/components';
+import { Select, SelectContent, ... } from '@axiom/mfe-lib-shared/components';
 \`\`\`
 
 ### 기본 사용법 (\`items\` + 구성 요소)

@@ -1,5 +1,5 @@
 {
-	"name": "@nic/mfe-lib-playground",
+	"name": "@axiom/mfe-lib-playground",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
@@ -9,7 +9,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@nic/mfe-lib-shared": "file:../..",
+		"@axiom/mfe-lib-shared": "file:../..",
 		"ag-grid-community": "^35.2.0",
 		"ag-grid-react": "^35.2.0",
 		"react": "^19.2.4",
