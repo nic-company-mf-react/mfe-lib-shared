@@ -10,10 +10,22 @@ const GUIDE = `
 
 ### 설치 (소비자 앱)
 
-\`zustand\`는 **peer dependency**입니다. host·remote 앱의 \`dependencies\`에 함께 설치하세요.
+\`zustand\`는 **peer dependency**입니다. host·remote 앱의 \`dependencies\`에 설치 되어있어야 합니다.
 
 \`\`\`bash
 npm install zustand
+\`\`\`
+
+마이크로 프론트엔드 아키텍처에서 전역 상태를 공유하고 일관되게 관리하려면, vite module federation의 shared 옵션에서 \`zustand\`를 singleton으로 설정하는 방식을 사용하는 것을 권장합니다.
+
+\`\`\`json
+shared: {
+	// ...
+	zustand: {
+		singleton: true,
+		requiredVersion: '^5.0.0', // package.json과 맞춤
+	},
+}
 \`\`\`
 
 ### 임포트
@@ -87,10 +99,20 @@ function SinglePanelDemo() {
 				>
 					+1
 				</Button>
-				<Button type="button" size="sm" variant="secondary" onClick={() => setData({ count: 0 })}>
+				<Button
+					type="button"
+					size="sm"
+					variant="secondary"
+					onClick={() => setData({ count: 0 })}
+				>
 					0으로 설정
 				</Button>
-				<Button type="button" size="sm" variant="outline" onClick={reset}>
+				<Button
+					type="button"
+					size="sm"
+					variant="outline"
+					onClick={reset}
+				>
 					reset
 				</Button>
 			</div>
@@ -119,15 +141,13 @@ function TwoPanelsSameKey() {
 
 /** initial 없음 — setData로만 채움 */
 function WithoutInitialDemo() {
-	const { data, setData, reset } = useClientState<{ label: string }>(
-		'storybook/useClientState/no-initial',
-	);
+	const { data, setData, reset } = useClientState<{ label: string }>('storybook/useClientState/no-initial');
 
 	return (
 		<div className="max-w-md space-y-4 rounded-lg border border-dashed border-border bg-card p-4 text-card-foreground">
 			<p className="text-sm text-muted-foreground">
-				키 <code className="rounded bg-muted px-1.5 py-0.5 text-xs">storybook/useClientState/no-initial</code>
-				— <code className="text-xs">initial</code> 없음
+				키 <code className="rounded bg-muted px-1.5 py-0.5 text-xs">storybook/useClientState/no-initial</code>—{' '}
+				<code className="text-xs">initial</code> 없음
 			</p>
 			<p className="text-sm">
 				현재 data:{' '}
@@ -136,10 +156,19 @@ function WithoutInitialDemo() {
 				</code>
 			</p>
 			<div className="flex flex-wrap gap-2">
-				<Button type="button" size="sm" onClick={() => setData({ label: 'hello' })}>
+				<Button
+					type="button"
+					size="sm"
+					onClick={() => setData({ label: 'hello' })}
+				>
 					setData 설정
 				</Button>
-				<Button type="button" size="sm" variant="outline" onClick={reset}>
+				<Button
+					type="button"
+					size="sm"
+					variant="outline"
+					onClick={reset}
+				>
 					reset (키 제거)
 				</Button>
 			</div>
