@@ -7,7 +7,7 @@ const require_CodeBlockClient = require("./chunks/CodeBlockClient-DcgtiFDd.cjs")
 const require_router = require("./chunks/router-B5Vhkv5f.cjs");
 const require_api = require("./chunks/api-B8wtOuFg.cjs");
 const require_query_client = require("./chunks/query-client-Cd83_jP2.cjs");
-const require_hooks = require("./chunks/hooks-CKfowT9Y.cjs");
+const require_hooks = require("./chunks/hooks-DI2GCjuf.cjs");
 require("./api/index.cjs");
 require("./query/index.cjs");
 require("./i18n/index.cjs");
@@ -65,6 +65,7 @@ exports.makeQueryClient = require_query_client.makeQueryClient;
 exports.registerWindowRouter = require_router.registerWindowRouter;
 exports.useApi = require_hooks.useApi;
 exports.useCarousel = require_ui.useCarousel;
+exports.useClientState = require_hooks.useClientState;
 exports.useTheme = require_context.useTheme;
 Object.defineProperty(exports, "useTranslation", {
 	enumerable: true,

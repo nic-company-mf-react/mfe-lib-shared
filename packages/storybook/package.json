@@ -12,7 +12,8 @@
 		"lint:fix": "eslint . --fix"
 	},
 	"dependencies": {
-		"@axiom/mfe-lib-shared": "*"
+		"@axiom/mfe-lib-shared": "*",
+		"zustand": "^5.0.0"
 	},
 	"devDependencies": {
 		"@storybook/addon-a11y": "^10.3.5",

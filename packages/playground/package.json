@@ -10,6 +10,7 @@
 	},
 	"dependencies": {
 		"@axiom/mfe-lib-shared": "file:../..",
+		"zustand": "^5.0.0",
 		"ag-grid-community": "^35.2.0",
 		"ag-grid-react": "^35.2.0",
 		"react": "^19.2.4",

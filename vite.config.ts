@@ -92,6 +92,8 @@ export default defineConfig({
 				// i18n
 				'i18next',
 				'react-i18next',
+				'zustand',
+				'zustand/react',
 				'@base-ui/react',        // ← 추가
     		/^@base-ui\/react\/.*/,  // ← 서브패스 전체 (combobox, select, popover 등)
 			],

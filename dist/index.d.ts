@@ -12,8 +12,8 @@ export { default as CodeBlockClient } from './components/code-block/CodeBlockCli
 export { cn } from './components/shadcn/lib/utils';
 export { ThemeProvider, useTheme } from './context';
 export { createWindowRouter, registerWindowRouter } from './utils/router';
-export { useApi } from './hooks';
-export type { IUseApiQueryOptions, IUseApiMutationOptions, UseApiMutationResult } from './hooks';
+export { useApi, useClientState } from './hooks';
+export type { IUseApiQueryOptions, IUseApiMutationOptions, UseApiMutationResult, IUseClientStateOptions, Initializer, } from './hooks';
 export { initApiConfig, getApiConfig, callApi, ApiError } from './api';
 export { makeQueryClient, getQueryClient, createQueryKey } from './query';
 export { i18n, I18nProvider, useTranslation } from './i18n/index';

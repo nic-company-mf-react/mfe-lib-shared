@@ -46,8 +46,14 @@ export { ThemeProvider, useTheme } from './context';
 // ── 라우터 ──
 export { createWindowRouter, registerWindowRouter } from './utils/router';
 // ── API 훅 ──
-export { useApi } from './hooks';
-export type { IUseApiQueryOptions, IUseApiMutationOptions, UseApiMutationResult } from './hooks';
+export { useApi, useClientState } from './hooks';
+export type {
+	IUseApiQueryOptions,
+	IUseApiMutationOptions,
+	UseApiMutationResult,
+	IUseClientStateOptions,
+	Initializer,
+} from './hooks';
 // ── API 설정 ──
 export { initApiConfig, getApiConfig, callApi, ApiError } from './api';
 // ── TanStack Query 유틸 ──
