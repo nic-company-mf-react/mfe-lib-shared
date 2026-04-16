@@ -58,6 +58,11 @@
 			"import": "./dist/context/index.js",
 			"require": "./dist/context/index.cjs"
 		},
+		"./dayjs": {
+			"types": "./dist/dayjs/index.d.ts",
+			"import": "./dist/dayjs/index.js",
+			"require": "./dist/dayjs/index.cjs"
+		},
 		"./utils": {
 			"types": "./dist/utils/index.d.ts",
 			"import": "./dist/utils/index.js",
@@ -126,6 +131,7 @@
 		"clsx": "^2.1.1",
 		"cmdk": "^1.1.1",
 		"date-fns": "^4.1.0",
+		"dayjs": "^1.11.20",
 		"embla-carousel-react": "^8.6.0",
 		"eslint": "^9.39.4",
 		"eslint-config-prettier": "^10.1.8",

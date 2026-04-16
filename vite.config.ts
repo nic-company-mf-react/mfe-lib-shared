@@ -43,6 +43,7 @@ export default defineConfig({
 				'components/ui/index': resolve(__dirname, 'src/components/shadcn/ui/index.ts'),
 				'types/index': resolve(__dirname, 'src/types/index.ts'),
 				'context/index': resolve(__dirname, 'src/context/index.ts'),
+				'dayjs/index': resolve(__dirname, 'src/dayjs/index.ts'),
 				'utils/index': resolve(__dirname, 'src/utils/index.ts'),
 				'hooks/index': resolve(__dirname, 'src/hooks/index.ts'),
 				'api/index': resolve(__dirname, 'src/api/index.ts'),
@@ -86,6 +87,8 @@ export default defineConfig({
 				'prettier',
 				// API
 				'axios',
+				'dayjs',
+				/^dayjs\/.*/,
 				'@tanstack/react-query',
 				'react-helmet-async',
 				'@tanstack/react-query-devtools',
